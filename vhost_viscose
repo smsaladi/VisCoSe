@@ -1,0 +1,30 @@
+<VirtualHost *>
+
+    ServerAdmin  webmaster@host.de
+	ServerName   viscose.host.de
+	ServerAlias  www.viscose.host.de
+	DocumentRoot /var/www/vhosts/viscose/
+
+    <Directory /var/www/vhosts/viscose/>
+		Options -Indexes FollowSymLinks MultiViews
+		AllowOverride All
+		Order allow,deny
+		allow from all
+	</Directory>
+
+    ScriptAlias /cgi-bin/ /var/www/vhosts/viscose/cgi-bin/
+    <Directory "/var/www/vhosts/viscose/cgi-bin">
+        AllowOverride None
+        Options ExecCGI -MultiViews +SymLinksIfOwnerMatch
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+	ErrorLog /var/log/apache2/error.log
+
+	LogLevel warn
+
+	CustomLog /var/log/apache2/access.log combined
+	ServerSignature On
+
+</VirtualHost>
