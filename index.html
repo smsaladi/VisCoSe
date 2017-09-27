@@ -1,0 +1,196 @@
+<html>
+<head>
+<title>VisCoSe - Visualisation and Comparison of Consensus Sequences</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" border="0" name="table" cellpadding="5" align="center">
+  <tr bgcolor="#EEEEFF" valign="middle" align="center"> 
+    <td> 
+      <div align="center"><font face="Arial, Helvetica, sans-serif" size="2">Home</font></div>
+    </td>
+    <td colspan="4"><font face="Arial, Helvetica, sans-serif"><b><font size="5">VisCoSe 
+      </font><font face="Arial, Helvetica, sans-serif" size="1">- Visualization 
+      and Comparison of consensus Sequences</font></b></font></td>
+    <td> 
+      <div align="center"><a href="http://ifg-izkf.uni-muenster.de/"><img src="html/ifg_small.jpg" width="60" height="29" border="0"></a></div>
+    </td>
+  </tr>
+  <tr bgcolor="#DDDDFF" align="center" valign="middle"> 
+    <td> 
+      <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><a href="html/description.html">Description</a></font></div>
+    </td>
+    <td> 
+      <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><a href="html/example.html">Example 
+        In-/Output</a></font></div>
+    </td>
+    <td> 
+      <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><a href="html/help.html">Help</a></font></div>
+    </td>
+    <td><font face="Arial, Helvetica, sans-serif" size="2"><a href="html/reference.html">Reference</a></font></td>
+    <td> 
+      <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><a href="html/history.html">History</a></font></div>
+    </td>
+    <td> 
+      <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><a href="html/download.html">Download</a></font></div>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" name="table" cellpadding="5" align="center">
+  <tr bgcolor="#CCCCFF"> 
+    <td colspan="5"> 
+      <form name="form" method="post" action="/cgi-bin/interface.pl" enctype="multipart/form-data">
+        <table width="100%" border="0" bordercolor="#CCCCFF" cellpadding="10" cellspacing="3">
+          <tr valign="top" align="left" bgcolor="#EEEEFF"> 
+            <td colspan="2"><b><font size="2" face="Arial, Helvetica, sans-serif">Input 
+              options...</font></b></td>
+          </tr>
+          <tr valign="top" align="left" bgcolor="#DDDDFF"> 
+            <td colspan="2"> 
+              <p><b><font face="Arial, Helvetica, sans-serif" size="2">Paste your 
+                alignment (FASTA format):</font></b><br>
+                <textarea name="alignment" cols="100" rows="8"></textarea>
+                <br>
+                <b><font face="Arial, Helvetica, sans-serif" size="2">...or choose 
+                a local file for upload (FASTA format):</font></b><br>
+                <input type="file" name="localfile" size="90">
+                <font face="Arial, Helvetica, sans-serif" size="2"> (<a href="html/help.html#alignment" target="_blank">help</a>)</font></p>
+              <p> <b><font size="2" face="Arial, Helvetica, sans-serif">Define 
+                groups (example: "1-26;27-35,43-50;36-42")...</font></b><br>
+                <input type="text" name="groups" size="90">
+                <font face="Arial, Helvetica, sans-serif" size="2">(<a href="html/help.html#groups" target="_blank">help</a>)</font></p>
+            </td>
+          </tr>
+          <tr valign="top" align="left" bgcolor="#EEEEFF"> 
+            <td colspan="2"><b><font size="2" face="Arial, Helvetica, sans-serif">Alignment 
+              / Coloring options...</font></b><font size="2" face="Arial, Helvetica, sans-serif"> 
+              (<a href="html/help.html#opt1" target="_blank">help</a>)</font></td>
+          </tr>
+          <tr valign="top" align="left" bgcolor="#DDDDFF"> 
+            <td> 
+              <p> 
+                <input type="checkbox" name="fra" value="checkbox">
+                <font face="Arial, Helvetica, sans-serif" size="2">force realignment 
+                of subsets after splitting even if the source dataset was already 
+                aligned </font><br>
+                <input type="checkbox" name="cg" value="checkbox" checked>
+                <font face="Arial, Helvetica, sans-serif" size="2">colorize the 
+                histogram in consensus colors<br>
+                </font><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif" size="2"> 
+                <input type="text" name="gh" size="6" value="25" maxlength="3">
+                height of the conservation-rate histogram</font></font></p>
+              </td>
+            <td><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif" size="2">
+              <input type="radio" name="radiogroup" value="na">
+              show no alignment</font></font> (<font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif" size="2">above 
+              consensus sequences</font></font>)<br>
+              <input type="radio" name="radiogroup" value="sa">
+              <font face="Arial, Helvetica, sans-serif" size="2">show alignment, 
+              <b>plain formatted</b></font><br>
+              <input type="radio" name="radiogroup" value="ca" checked>
+              <font face="Arial, Helvetica, sans-serif" size="2">show alignment, 
+              <font color="#FF0000"><b>c</b></font><b><font color="#00FF00">o</font><font color="#0000FF">l</font><font color="#FFFFFF">o</font><font color="#FFFF00">r</font><font color="#00FFFF"> 
+              f</font><font color="#FF00FF">o</font><font color="#00FF00">r</font><font color="#0000FF">m</font><font color="#00FF00">a</font><font color="#FF0000">t</font><font color="#FFFF00">t</font><font color="#FFFFFF">e</font><font color="#00FF00">d</font></b></font><br>
+              <input type="radio" name="radiogroup" value="fa">
+              <font face="Arial, Helvetica, sans-serif" size="2">show alignment, 
+              <font color="#FF0000"><b>c</b></font><b><font color="#00FF00">o</font><font color="#0000FF">l</font><font color="#FFFFFF">o</font><font color="#FFFF00">r</font><font color="#00FFFF"> 
+              f</font><font color="#FF00FF">o</font><font color="#00FF00">r</font><font color="#0000FF">m</font><font color="#00FF00">a</font><font color="#FF0000">t</font><font color="#FFFF00">t</font><font color="#FFFFFF">e</font><font color="#00FF00">d</font></b> 
+              <font color="#FF0000"><b>for ALL aminoacids</b></font> (<b><i>results 
+              in larger files</i></b>!!!)</font></td>
+          </tr>
+          <tr valign="top" align="left" bgcolor="#EEEEFF"> 
+            <td width="50%" bgcolor="#EEEEFF"> 
+              <p><b><font size="2" face="Arial, Helvetica, sans-serif">Viewing 
+                options...</font></b><font size="2" face="Arial, Helvetica, sans-serif"> 
+                (<a href="html/help.html#opt2" target="_blank">help</a>)</font></p>
+            </td>
+            <td><b><font size="2" face="Arial, Helvetica, sans-serif">Alphabet 
+              options (chemical properties of amino acids)...</font></b><font size="2" face="Arial, Helvetica, sans-serif"> 
+              (<a href="html/help.html#opt3" target="_blank">help</a>)</font></td>
+          </tr>
+          <tr valign="top" align="left" bgcolor="#DDDDFF"> 
+            <td bgcolor="#DDDDFF" width="50%"> <font face="Arial, Helvetica, sans-serif"> 
+              <font size="2"> 
+              <select name="bg">
+                <option value="white" selected>white</option>
+                <option value="lightgray">lightgray</option>
+                <option value="midgray">midgray</option>
+                <option value="darkgray">darkgray</option>
+                <option value="black">black</option>
+              </select>
+              background color<br>
+              <select name="fs">
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8" selected>8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+              </select>
+              font size <br>
+              <input type="text" name="gc" size="4" value="|" maxlength="1">
+              character used for conservation rate histogram columns<br>
+              <input type="checkbox" name="lb" value="checkbox">
+              linebreak at character 
+              <input type="text" name="lbpos" size="6" value="180">
+              </font></font></td>
+            <td bgcolor="#DDDDFF"> 
+              <p><font face="Arial, Helvetica, sans-serif"><font size="2"> 
+                <select name="alphabet">
+                  <option value="none" selected>None / Default 20 aa</option>
+                  <option value="hp">HP model</option>
+                  <option value="csp">Chemical/structural properties</option>
+                  <option value="csp2">Chemical/structural properties #2</option>
+                  <option value="murphy15">Murphy et al. 15 letters</option>
+                  <option value="murphy10">Murphy et al. 10 letters</option>
+                  <option value="murphy8">Murphy et al. 8 letters</option>
+                  <option value="murphy4">Murphy et al. 4 letters</option>
+                  <option value="murphy2">Murphy et al. 2 letters</option>
+                  <option value="wang5">Wang &amp; Wang 5 letters</option>
+                  <option value="wang5_var">Wang &amp; Wang variant 5 letters</option>
+                  <option value="wang3">Wang &amp; Wang 3 letters</option>
+                  <option value="wang2">Wang &amp; Wang 2 letters</option>
+                  <option value="li10">Li et al. 10 letters</option>
+                  <option value="li5">Li et al. 5 letters</option>
+                  <option value="li4">Li et al. 4 letters</option>
+                  <option value="li3">Li et al. 3 letters</option>
+                </select>
+                choose an alphabet (<a href="html/alphabets.html" target="_blank">info 
+                about alphabets</a>)</font></font></p>
+              <p><font face="Arial, Helvetica, sans-serif" size="2">If a reduced 
+                alphabet (instead of &quot;default 20 aa&quot;) is chosen, VisCoSe 
+                <b>additionally</b> computes a translated alignment and consensus 
+                sequence. The 20 aa consensus is presented beneath the translated 
+                consensus (including conservation graph) for better illustration 
+                of both sequences.</font></p>
+            </td>
+          </tr>
+          <tr valign="top" align="left" bgcolor="#CCCCFF"> 
+            <td colspan="2"> 
+              <input type="submit" name="submit" value="Submit">
+              <input type="reset" name="reset" value="Reset">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0" name="table" cellpadding="5" align="center">
+  <tr bgcolor="#EEEEFF"> 
+    <td colspan="5"><font face="Arial, Helvetica, sans-serif" size="2">For bug 
+      reports, suggestions etc. please contact <a href="mailto:michael.spitzer@uni-muenster.de">michael.spitzer@uni-muenster.de</a> (current VisCoSe version: V1.0-06042004)</font></td>
+  </tr>
+</table>
+</body>
+</html>

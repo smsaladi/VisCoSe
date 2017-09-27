@@ -1,0 +1,161 @@
+# This file defines one or more simplified amino acid alphabets.
+# The format for such an alphabet is as follows:
+#
+# [name of alphabet]          # the name of the alphabet enclosed in square brackets
+# ADKLH G       (name)        # simplification rule: amino acids A, D, K, L, H are combined into G
+# YTRS  K       (name)        #                                  Y, T, R, S                      K
+# ...
+#
+# - a '#' introduces a comment. It may be placed anywhere in a line and
+#   everything which follows a '#' is completely ignored
+#
+# - The groups of amino acids and the combined letter may be seperated by one or more
+#   spaces or TABs
+#
+# - The name of a group may be seperated from the combined letter by again one or
+#   more spaces or TABs
+#
+# Okay, let's begin with the simplifying ;-)
+
+[default]   # DON'T RENAME / DELETE !!!
+G              G                 (Glycine)                
+A              A                 (Alanine)                
+V              V                 (Valine)                 
+L              L                 (Leucine)                
+I              I                 (Isoleucine)             
+P              P                 (Proline)                
+F              F                 (Phenylalanine)          
+Y              Y                 (Tyrosine)               
+W              W                 (Tryptophan)             
+S              S                 (Serine)                 
+T              T                 (Threonine)              
+N              N                 (Asparagine)             
+Q              Q                 (Glutamine)              
+C              C                 (Cysteine)               
+M              M                 (Methionine)             
+D              D                 (Aspartate)              
+E              E                 (Glutamate)              
+H              H                 (Histidine)              
+K              K                 (Lysine)                 
+R              R                 (Arginine)               
+
+[hp]        # hydrophilic vs. hydrophobic
+CMFILVWY       H                 (hydrophobic)
+AGTSNQDEHRKP   P                 (hydrophilic)
+
+[csp]       # Chemical / structural properties
+IVL            A                 (aliphatic)
+FYWH           R                 (aromatic)
+KRDE           C                 (charged)
+GACS           T                 (tiny)
+TMQNP          D                 (diverse)
+
+[csp2]      # Chemical / structural properties - more detail
+IVL            A                 (aliphatic)
+FYWH           R                 (aromatic)
+KR             P                 (pos. charged)
+DE             N                 (neg. charged)
+GACS           T                 (tiny)
+TMQNP          D                 (diverse)
+
+[murphy15]  # from Murphy LR, Anders W and Levy RM, Protein Engineering, Vol. 13 No. 3, pp.149-152, 2000
+LVIM           L                 (large hydrophobes)
+C              C              
+A              A
+G              G
+S              S
+T              T
+P              P
+FY             F
+W              W
+E              E
+D              D
+N              N
+Q              Q
+KR             K                 (long-chain positively charged)
+H              H
+
+[murphy10]  # from Murphy LR, Anders W and Levy RM, Protein Engineering, Vol. 13 No. 3, pp.149-152, 2000
+LVIM           L                 (large hydrophobes)
+C              C
+A              A
+G              G
+ST             S                 (polar)
+P              P
+FYW            F                 (hydrophobic aromatic sidechains)
+EDNQ           E                 (charged / polar)
+KR             K                 (long-chain positively charged)
+H              H
+
+[murphy8]   # from Murphy LR, Anders W and Levy RM, Protein Engineering, Vol. 13 No. 3, pp.149-152, 2000
+LVIMC          L                 (hydrophobic)
+AG             A
+ST             S                 (polar)
+P              P
+FYW            F                 (hydrophobic aromatic sidechains)
+EDNQ           E                 (polar)
+KR             K                 (polar)
+H              H
+
+[murphy4]   # from Murphy LR, Anders W and Levy RM, Protein Engineering, Vol. 13 No. 3, pp.149-152, 2000
+LVIMC          L
+AGSTP          A                 (small residues)
+FYW            F                 (hydrophobic aromatic sidechains)
+EDNQKRH        E                 (polar)
+
+[murphy2]   # from Murphy LR, Anders W and Levy RM, Protein Engineering, Vol. 13 No. 3, pp.149-152, 2000
+LVIMCAGSTPFYW  P                 (hydrophobic/small)
+EDNQKRH        H                 (hydrophilic)
+
+[wang5]     # from Wang J, Wang W, Nature Struct Biol, Vol. 6 No. 11, pp.1033-1038, 1999
+CMFILVWY       I
+ATH            A
+GP             G
+DE             E
+SNQRK          K
+
+[wang5_var] # from Wang J, Wang W, Nature Struct Biol, Vol. 6 No. 11, pp.1033-1038, 1999
+CMFI           I
+LVWY           L
+ATGS           A
+NQDE           E
+HPRK           K
+
+[wang3]     # from Wang J, Wang W, Nature Struct Biol, Vol. 6 No. 11, pp.1033-1038, 1999
+CMFILVWY       I
+ATHGPR         A
+DESNQK         K
+
+[wang2]     # from Wang J, Wang W, Nature Struct Biol, Vol. 6 No. 11, pp.1033-1038, 1999
+CMFILVWY       I
+ATHGPDESNQRK   A
+
+[li10]      # from Li T, Wang J, Wang W, Protein Engineering, Vol. 16 No. 5, pp. 323-330, 2003
+C              C
+FYW            Y
+ML             L
+IV             V
+G              G
+P              P
+ATS            S
+NH             N
+QED            E
+RK             K
+
+[li5]       # from Li T, Wang J, Wang W, Protein Engineering, Vol. 16 No. 5, pp. 323-330, 2003
+CFYW           Y
+MLIV           I
+G              G
+PATS           S
+NHQEDRK        E
+
+[li4]       # from Li T, Wang J, Wang W, Protein Engineering, Vol. 16 No. 5, pp. 323-330, 2003
+CFYW           Y
+MLIV           I
+GPATS          S
+NHQEDRK        E
+
+[li3]       # from Li T, Wang J, Wang W, Protein Engineering, Vol. 16 No. 5, pp. 323-330, 2003
+CFYWMLIV       I
+GPATS          S
+NHQEDRK        E

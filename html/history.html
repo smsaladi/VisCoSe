@@ -1,0 +1,407 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>VisCoSe - History</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<table style="width: 100%; height: 100%;" border="0" name="table"
+ cellpadding="5">
+  <tbody>
+    <tr bgcolor="#eeeeff" valign="middle" align="center">
+      <td style="background-color: rgb(238, 238, 255);">
+      <div align="center"><font face="Arial, Helvetica, sans-serif"><font
+ size="2"><a href="http://viscose.ifg.uni-muenster.de/">Home</a></font></font></div>
+      </td>
+      <td bgcolor="#eeeeff">
+      <div align="center"><font face="Arial, Helvetica, sans-serif"><b><font
+ size="5">VisCoSe </font><font size="1"
+ face="Arial, Helvetica, sans-serif">- Visualization and Comparison of
+consensus Sequences</font></b></font></div>
+      </td>
+      <td bgcolor="#eeeeff">
+      <div align="center"><a href="http://ifg-izkf.uni-muenster.de/"><img
+ src="ifg_small.jpg" width="60" height="29" border="0"></a></div>
+      </td>
+    </tr>
+    <tr bgcolor="#ddddff">
+      <td colspan="3">
+      <div align="center"><font size="2"
+ face="Arial, Helvetica, sans-serif"><b><font size="3">History</font></b></font></div>
+      </td>
+    </tr>
+    <tr bgcolor="#ccccff">
+      <td colspan="3">
+      <div style="text-align: center;"> </div>
+      <table style="text-align: left; width: 100%; height: 100%;"
+ border="0" cellspacing="6" cellpadding="4">
+        <tbody>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; color: rgb(51, 51, 255); text-align: right;"><font
+ size="-1">ToDo<br>
+            </font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; color: rgb(51, 51, 255);"><font
+ size="-1">nothing urgent right now, waiting for feedback with
+bug-reports ;-)</font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; text-align: right; font-weight: bold; font-family: helvetica,arial,sans-serif;"><font
+ size="-1">15.04.2004</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1"><span style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span><span
+ style="color: rgb(51, 51, 255);"> <span style="color: rgb(0, 0, 0);">Fixed
+a weird bug in the alphabet section which caused all amino acids to be
+translated into only a single character. It's so weird because I'm
+pretty sure this was working 100% a few days before!!!<br>
+            </span></span></font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; text-align: right;"><font
+ size="-1">07.04.2004</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1"><span style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span><span
+ style="color: rgb(51, 51, 255);"> <span style="color: rgb(0, 0, 0);">VisCoSe
+messed the consensus comparison up when one of any defined groups
+consisted of 1 sequence only.</span></span></font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-weight: bold; font-family: helvetica,arial,sans-serif; text-align: right;"><font
+ size="-1">06.04.2004</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1"><span style="color: rgb(51, 51, 255); font-weight: bold;">CHANGED
+BEHAVIOUR:</span><span style="color: rgb(51, 51, 255);"> </span>all
+alignmens/datasets read by VisCoSe are now being converted to uppercase
+before doing any fancy stuff on them (columns mixed with lower- and
+uppercase characters disturbed the correct consensus calculation, eg.
+if an alignment was made using DiAlign).<br>
+            </font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; text-align: right; font-weight: bold; font-family: helvetica,arial,sans-serif;"><font
+ size="-1">23.03.2004</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1"><span style="color: rgb(51, 51, 255); font-weight: bold;">ADDED
+FUNCTIONALITY:</span><span style="color: rgb(51, 51, 255);"> </span>the
+FASTA-I/O-routine have been extended with better checking for format
+violations:<br>
+- handling multiple identical deflines: a warning is issued (to console
+or the logfile, respectively) and the <span style="font-style: italic;">n</span>-th
+occurence of the defline is renamed to "defline_copy<span
+ style="font-style: italic;">n</span>".<br>
+- handling of non-standard characters (LF, CR, TAB)&nbsp; in datasets:
+they are simply removed ;-) TABs in submitted datasets caused some
+"failures" of VisCoSe recently and disturbed the results (which were
+looking quite weird ;-)<br>
+            </font><font size="-1"><span
+ style="color: rgb(51, 51, 255); font-weight: bold;">ADDED
+FUNCTIONALITY:</span><span style="color: rgb(51, 51, 255);"> </span></font><font
+ size="-1">the logfile of a user's VisCoSe run is available on the
+results page (so each user has the possibility to look for errors /
+warnings for himself in more detail. I hope this lowers the
+"bug"-reports somewhat, because most of them were based on faulty FASTA
+format).<br>
+            </font><font size="-1"><span
+ style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span></font><font
+ size="-1"> I finally got rid of the absolute links in the results
+page. This was on the agenda for quite long, but was pushed back for
+more important and vital fixes.<br>
+            </font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; text-align: right; font-weight: bold; font-family: helvetica,arial,sans-serif;"><font
+ size="-1">02.03.2004</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1"><span style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span>
+scales being unaligned with the data. I
+thought I fixed this a week ago, but apparently I was too arrogant ;-).
+It should work now in all cases, since I made some improvements on the
+code in <span style="font-style: italic;">HTMLstuff.pm</span> and <span
+ style="font-style: italic;">ConsensusTools.pm</span>,
+dealing with a minimal offset for data, graph and scales. At the same
+time I was able to simplify the code a bit and to cut down variables
+not needed anymore. These scale-bugs are really starting to annoy me...
+;-)<br>
+            </font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; text-align: right; font-weight: bold; font-family: helvetica,arial,sans-serif; color: rgb(255, 0, 0);">
+            <font size="-1">25.02.2004 - 26.02.2004</font></td>
+            <td style="vertical-align: top;"><font size="-1"><span
+ style="font-family: helvetica,arial,sans-serif;">another cluster
+hiccup. My apologies, but I didn't see that one coming. One queue
+(=node) was inactive and the cluster management software didn't seem to
+be able to cope with that correctly.</span></font><br>
+            </td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;">
+            <font size="-1">20.02.2004 </font> </td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;">
+            <p> <font size="-1"><span
+ style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span>
+fixed a small bug (scales were unaligned with the alignment when
+deflines were very short) in <span style="font-style: italic;">HTMLstuff.pm.<br>
+            </span></font> <font size="-1"><span
+ style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span> a
+small glitch (again in </font><font size="-1"><span
+ style="font-style: italic;">HTMLstuff.pm</span></font> <font size="-1">)
+caused gap characters inside consensus sequences to be coloured in a
+conservation-rate related color sometimes. This was fixed in a way that
+now gaps are always shown in black.</font><span
+ style="font-style: italic;"><br>
+            </span></p>
+            </td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">17.02.2004 </font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;">
+            <p><font size="-1"><span
+ style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span>
+fixed a small bug located in checking the group definitions for sanity
+in <span style="font-style: italic;">viscose.pl.</span><br>
+            <span style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span>
+fixed a weird bug which sometimes caused the scales to be unaligned
+with the sequences when doing comparison of consensus sequences.</font><br>
+            <font size="2">MAFFT updated to version 3.88.</font></p>
+            </td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; color: rgb(255, 0, 0); text-align: right;"><font
+ size="-1">14.02.2004 - 16.02.2004</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1">the cluster (which is used for VisCoSe computations)
+unexpectedly had to be taken down for maintenance for approx. 2.5 days.
+If you submitted jobs during that period and remembered your job ID,
+you can get the results via <span
+ style="font-style: italic; font-weight: bold;">http://viscose.ifg.uni-muenster.de/temp/JOB-ID/viscose_results.html</span>.
+In the case you forgot the ID, just submit the job again.</font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">10.09.2003</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1"><span style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span></font><font
+ size="-1"> linebreaks were calculated with respect to the *overall*
+line length. Now it's calculated with respect to the sequence length
+only!<br>
+Website debugged, typos removed, references straightened.</font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">09.09.2003<br>
+            </font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1"><span style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span></font><font
+ size="-1"> some reduced alphabets weren't valid because of a bug in
+the routine dealing with parsing such alphabet configurations.<br>
+Website design cleaned up, seperate help page describing all VisCoSe
+options available via the web interface.</font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">08.09.2003<br>
+            </font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1">new features:<br>
+- possibility to use reduced amino acid alphabets.<br>
+            </font><font size="-1"><span
+ style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span></font><font
+ size="-1"> when no alignment was to be shown above the consensus
+sequence, the histogram had a wrong indention in respect to the
+consensus sequence.</font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">29.08.2003<br>
+            </font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1">new features / options:<br>
+- background and general font colors are adjustable now<br>
+- the fontsize for alignment, graph and consensus can be specified<br>
+- the character used to draw the conservation graph can be set<br>
+- possibility to have linebreaks at a custom position (easier printing)<br>
+- MAFFT updated to version 3.85<br>
+All options are available in VisCoSe itself as well as via the web
+interface.<br>
+            </font><font size="-1"><span
+ style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span></font><font
+ size="-1"> the parameter combination '-ca/-fa' and a missing '-cg' led
+to a crash of VisCoSe because a feature needed by '-ca/-fa' wasn't
+computed.</font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">22.07.2003</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1"><span style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span></font><font
+ size="-1"> the CGI script had problems when files were uploaded by
+Windows users with (again...) IE (because of the "X:\path\path\file"
+format...).</font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">19.05.2003<br>
+            </font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1"><span style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span></font><font
+ size="-1"> the CGI script had problems when FORM-data was submitted by
+OPERA and KDE-Konqueror browsers. This was due to a too fuzzy handling
+of the "boundary"-tag. Fixed. VisCoSe now works with Mozilla
+(recommended!!), Internet Explorer (holey as a swiss cheese ;-), Opera
+(nice) and Konqueror (I don't like the font smoothing for fixed widths
+fonts for KDE 3.x). It should work with any other W3C-conform browser,
+too.<br>
+            </font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">28.04.2003</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1">added a feature called "full colored alignment". This
+presents the alignment with all aminoacids being color-coded in respect
+to their conservation-rate, not only those aminoacids being also
+present in the consensus sequence at the according position.<br>
+            </font><font size="-1"><span
+ style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span></font><font
+ size="-1"> some characters following gaps were left white with the
+"full color" option being activated.<br>
+            </font><font size="-1"><span
+ style="color: rgb(51, 51, 255); font-weight: bold;">BUGFIX:</span></font><font
+ size="-1"> the CGI script had a flaw which could potentially break the
+data in *aligned* datasets.<br>
+            </font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">24.04.2003</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1"> the "static" result page is now being presented in a nicer
+and more concise way using tables and explanations for each generated
+file.</font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">23.04.2003</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1">jobs are from now on being submitted to our nice x86-nodes,
+so VisCoSe finishes a lot faster plus taking the load from the
+webserver. Additionally, a TAR-archive from a job's directory is being
+made and copied into the job-directory, so a user can easily download
+all the generated result files all in one and store the files/the
+archive on his local harddisk.</font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">22.04.2003</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1">implemented a "result page". Links to result files are
+presented from now on using a static HTML-page and no longer via the
+dynamic, interface.pl-generated page (which caused some browsers - like
+beloved Microsoft IE - to re-send form data each time the user hit the
+"Back"-Button to select another result file. Mozilla was okay with
+this. Okay, one may state I wrote crappy CGI code... ;-). The user can
+easily bookmark this page and come back anytime later (until the job-ID
+gets deleted after a week or so to save disk-space on our webserver).</font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">16.04.2003</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1">file upload works now (hopefully, waiting for
+feedback).&nbsp; There was a bug with *not* defining groups, the
+'-group' switch was passed to VisCoSe anyway, but without a valid
+group-definition. The CGI script had to be adopted to "multipart form
+data" because of the addition of the file box. Nerve-wrecking, d00d.</font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">15.04.2003</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1">in a mystical and obscure way the issue with not finding
+Bit::Vector got solved from one day to another. The issue with
+realigning (or aligning unaligned data) has been fixed.</font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">14.04.2003</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1">There's a bug with aligning unaligned data and
+HTML-formatting the resulting consensi and the script can't find the
+Bit::Vector-Library on our x86-machines (although it's installed per
+default on all nodes...). Since I plan to submit the VisCoSe-jobs
+themself to the faster X86-nodes I have to fix this...</font></td>
+          </tr>
+          <tr>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif; font-weight: bold; white-space: nowrap; text-align: right;"><font
+ size="-1">09.04.2003</font></td>
+            <td
+ style="vertical-align: top; font-family: helvetica,arial,sans-serif;"><font
+ size="-1">first "public" version for beta-testing. There seems to be a
+problem if the user pastes unaligned data, I'll fix this when I'm back
+from RECOMB2003.</font></td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr bgcolor="#ddddff">
+      <td colspan="3"><br>
+      </td>
+    </tr>
+    <tr bgcolor="#eeeeff">
+      <td colspan="3"><font face="Arial, Helvetica, sans-serif" size="2">For
+bug reports, suggestions etc. please contact <a
+ href="mailto:michael.spitzer@uni-muenster.de">michael.spitzer@uni-muenster.de</a></font></td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
