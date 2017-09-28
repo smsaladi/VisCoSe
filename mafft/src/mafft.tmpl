@@ -1,0 +1,460 @@
+#! /bin/sh
+
+prog="";
+which gawk > /dev/null 2>&1 && prog="gawk";
+if [ "$prog" = ""  ] ; then
+	which nawk > /dev/null 2>&1  && prog="nawk";
+fi
+if [ "$prog" = ""  ] ; then
+	which awk > /dev/null 2>&1 && prog="awk";
+fi
+echo "prog = " $prog
+
+#TMPDIR=/tmp/`basename $0`.`whoami`.$$.`date +%y%m%d%H%M%S`
+TMPDIR=./`basename $0`.`whoami`.$$.`date +%y%m%d%H%M%S`
+export TMPDIR 
+ORIDIR=`pwd`
+export ORIDIR
+umask 077
+mkdir  $TMPDIR  || exit 1
+trap "rm -r $TMPDIR; exit 1" 2
+#echo "$ORIDIR -> $TMPDIR"
+
+(
+cd $TMPDIR
+
+$prog '
+BEGIN {
+	prefix = ENVIRON["MAFFT_BINARIES"];
+	tmpdir = ENVIRON["TMPDIR"];
+	oridir = ENVIRON["ORIDIR"];
+	if( prefix == "" ) prefix = "_PREFIX";
+	printf( "\n" ) > "/dev/tty";
+	printf( "----------------------------------------------------------------\n" ) > "/dev/tty";
+	printf( "\n" )                                                                 > "/dev/tty";
+	printf( "   MAFFT version 3.89 (2004/02/05)\n" )                               > "/dev/tty";
+	printf( "\n" )                                                                 > "/dev/tty";
+	printf( "        K. Katoh, K. Misawa, K. Kuma and T. Miyata (2002)\n" )        > "/dev/tty";
+	printf( "        Nucleic Acids Research 30: 3059-3066.\n" )                    > "/dev/tty";
+	printf( "        http://www.biophys.kyoto-u.ac.jp/~katoh/programs/align/\n" )  > "/dev/tty";
+	printf( "----------------------------------------------------------------\n" ) > "/dev/tty";
+	printf( "\n" );
+
+	while( 1 )
+	{
+		printf( "Input file ? (fasta format)\n@ " ) > "/dev/tty";
+		getline < "/dev/tty";
+		infile = sprintf( "%s/%s", oridir, $1 );
+		if( NF == 0 )
+			continue;
+		res = getline < infile;
+		if( res == -1 )
+			printf( "%s: No such file.\n\n", infile );
+		else if( res == 0 )
+			printf( "%s: Empty.\n", infile );
+		else
+		{
+			printf( "OK. infile = %s\n\n", infile );
+			break;
+		}
+	}
+	close( infile );
+	while( getline < infile > 0 )
+	{
+		gsub( "\r", "\n" )
+		print > "infile";
+	}
+
+	while( 1 )
+	{
+		printf( "Output file ?\n@ " ) > "/dev/tty";
+		getline < "/dev/tty";
+		outfile = sprintf( "%s/%s", oridir, $1 );
+		if( NF == 0 )
+			continue;
+		else
+		{
+			printf( "OK. outfile = %s\n\n", outfile );
+			break;
+		}
+	}
+
+	while( 1 )
+	{
+		printf( "Strategy ?\n" ) > "/dev/tty";
+		printf( " 1. FFT-NS-1\n" ) > "/dev/tty";
+		printf( " 2. FFT-NS-2\n" ) > "/dev/tty";
+		printf( " 3. FFT-NS-3\n" ) > "/dev/tty";
+		printf( " 4. FFT-NS-i\n" ) > "/dev/tty";
+		printf( " 5. NW-NS-1\n" )  > "/dev/tty";
+		printf( " 6. NW-NS-2\n" )  > "/dev/tty";
+		printf( " 7. NW-NS-3\n" )  > "/dev/tty";
+		printf( " 8. NW-NS-i\n" )  > "/dev/tty";
+		printf( " 9. NW-AP-2\n" )  > "/dev/tty";
+		printf( "10. FFT-NS-ROUGH (# of sequences > 1,000)\n" ) > "/dev/tty";
+		printf( "11. NW-NS-ROUGH  (# of sequences > 1,000)\n" ) > "/dev/tty";
+		printf( "@ " ) > "/dev/tty";
+		getline < "/dev/tty";
+		strategy = 0 + $1;
+		if( strategy < 1 || 11 < strategy )
+			printf( "\n" );
+		else
+		{
+			printf( "OK. %d\n\n", strategy );
+			break;
+		}
+	}
+
+#	while( 1 )
+#	{
+#		params[1] = 2.40;
+#		params[2] = 0.00;
+#		params[3] = 0.06;
+#		printf( "Parameters ? [%4.2f %4.2f %4.2f]\n", params[1], params[2], params[3] ) > "/dev/tty";
+#		printf( "@ " ) > "/dev/tty";
+#		getline < "/dev/tty";
+#		if( NF == 3 )
+#		{
+#			params[1] = 0.0 + $1;
+#			params[2] = 0.0 + $2;
+#			params[3] = 0.0 + $3;
+#			printf( "OK. %4.2f %4.2f %4.2f\n\n", params[1], params[2], params[3] );
+#			break;
+#		}
+#		else if( NF == 0 )
+#		{
+#			printf( "OK. %5.2f %5.2f %5.2f\n\n", params[1], params[2], params[3] );
+#			break;
+#		}
+#	}
+
+	if( strategy == 1 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -FAx < infile; cat pre > \"%s\"", prefix, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+	else if( strategy == 2 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			print "res = " res;
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -FAx < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JFAx < pre; cat pre  > \"%s\"", prefix, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+
+	else if( strategy == 3 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			print "res = " res;
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -FAx < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JFAx < pre > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JFAx < pre; cat pre  > \"%s\"", prefix, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+
+	else if( strategy == 4 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in sextet5\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -FAx < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JFAx < pre > /dev/null ", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/dndpre < pre > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in dndpre\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/dvtditr -xAt < pre; cat pre > \"%s\"", prefix, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in dvtditr\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+
+	if( strategy == 5 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -Ax < infile; cat pre > \"%s\"", prefix, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+	else if( strategy == 6 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			print "res = " res;
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -Ax < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JAx < pre; cat pre > \"%s\"", prefix, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+
+	else if( strategy == 7 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			print "res = " res;
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -Ax < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JAx < pre > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JAx < pre; cat pre > \"%s\"", prefix, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+
+	else if( strategy == 8 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in sextet5\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -Ax < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JAx < pre > /dev/null ", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/dndpre < pre > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in dndpre\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/dvtditr -xAt < pre; cat pre > \"%s\"", prefix, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in dvtditr\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+
+	else if( strategy == 9 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			print "res = " res;
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -Ax -h -0.82 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JAx -h -0.820 < pre; cat pre > \"%s\"", prefix, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+	else if( strategy == 10 || strategy == 11 )
+	{
+		if( strategy == 10 ) fftoption = "-FA"
+		else                 fftoption = "-A"
+		command = sprintf( "%s/splitseq infile 500", prefix );
+		res = system( command );
+
+		getline < "sp-count"
+		ngroup = 0 + $1
+
+		for( i=1; i<=ngroup; i++ )
+		{
+			printf( "Aligning group %d\n", i );
+			spfile = sprintf( "sp-%d", i );
+			alfile = sprintf( "al-%d", i );
+			system( "grep \"^[>|=]\" " spfile " | wc > seq-count" );
+			close( "seq-count" );
+			getline < "seq-count";
+			nseq = 0+$1
+			printf( "nseq = %d\n", nseq );
+			if( nseq == 1 )
+			{
+				system( "cp " spfile " " alfile );
+				break;
+			}
+			command = sprintf( "%s/sextet5 < " spfile " > /dev/null 2>&1", prefix );
+			res = system( command );
+			if( res )
+			{
+				printf( "Error in %s\n", command ) > "/dev/tty";
+				exit( 1 );
+			}
+	
+			command = sprintf( "%s/tbfast %s -x < " spfile " > /dev/null 2>&1; cat pre > \"%s\"", prefix, fftoption, alfile );
+			res = system( command );
+			if( res )
+			{
+				printf( "Error in tbfast\n" ) > "/dev/tty";
+				exit( 1 );
+			}
+		}
+		if( ngroup == 1 )
+		{
+			command = sprintf( "cat %s > \"%s\"", alfile, outfile );
+			system( command );
+		}
+		system( "cp al-1 alall" );
+		for( i=2; i<=ngroup; i++ )
+		{
+			command =  sprintf( "%s/galn -A alall al-%d > altmp", prefix, i );
+			res = system( command );
+			if( res )
+			{
+				printf( "Error in galn\n" ) > "/dev/tty";
+				exit( 1 );
+			}
+			system( "mv altmp alall" );
+		}
+		command = sprintf( "cat alall > \"%s\"", outfile );
+		system( command );
+	}
+}
+'
+)
+
+rm -r $TMPDIR

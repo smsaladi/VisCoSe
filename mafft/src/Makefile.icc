@@ -1,0 +1,217 @@
+#BINDIR =  $(DESTDIR)/usr/lib/mafft
+BINDIR =  ../bin
+CC = icc -tpp6
+PROGS = ord dvtditr dndfast4 dndpre sextet5 tbfast galn score
+OBJORD = mtxutl.o io.o mltaln9.o ord.o constants.o Calignm1.o \
+         dp.o
+OBJ1ITR = mtxutl.o io.o mltaln9.o 1itr.o constants.o Calignm1.o \
+          nj.o iteration.o dp.o
+OBJTB = mtxutl.o io.o mltaln9.o tddis.o constants.o A+++alignmm.o \
+		SAalignmm.o Calignm1.o iteration.o tb.o dp.o
+OBJTBFAST = mtxutl.o io.o mltaln9.o tddis.o constants.o A+++alignmm.o \
+		    Falign.o SAalignmm.o Calignm1.o iteration.o \
+			tbfast.o dp.o fft.o fftFunctions.o
+OBJTDITR = mtxutl.o io.o mltaln9.o tddis.o constants.o nj.o  A+++alignmm.o \
+		   Calignm1.o Falign.o fftFunctions.o fft.o iteration.o \
+		   tditeration.o tditr.o dp.o SAalignmm.o treeOperation.o
+OBJDVTDITR = mtxutl.o io.o mltaln9.o tddis.o constants.o nj.o  A+++alignmm.o \
+			Calignm1.o Falign.o fftFunctions.o fft.o iteration.o \
+			tditeration.o dvtditr.o dp.o SAalignmm.o treeOperation.o
+OBJGAPFILL = mtxutl.o io.o constants.o gapfill.o
+OBJDNDFAST4 = dndfast4.o io.o constants.o mtxutl.o mltaln9.o tddis.o
+OBJDNDFAST3 = dndfast3.o io.o constants.o mtxutl.o mltaln9.o tddis.o
+OBJTRIPLET = io.o constants.o mtxutl.o mltaln9.o tddis.o triplet.o
+OBJTRIPLET3 = io.o constants.o mtxutl.o mltaln9.o tddis.o triplet3.o
+OBJSEXTET3 = io.o constants.o mtxutl.o mltaln9.o tddis.o sextet3.o
+OBJSEXTET4 = io.o constants.o mtxutl.o mltaln9.o tddis.o sextet4.o
+OBJSEXTET5 = io.o constants.o mtxutl.o mltaln9.o tddis.o sextet5.o
+OBJOCTET4 = io.o constants.o mtxutl.o mltaln9.o tddis.o octet4.o
+OBJDNDPRE = dndpre.o io.o constants.o mtxutl.o mltaln9.o
+OBJGALN = io.o mtxutl.o mltaln9.o tddis.o constants.o A+++alignmm.o \
+          Calignm1.o SAalignmm.o Falign.o fftFunctions.o fft.o galn.o dp.o
+OBJSCORE = io.o mtxutl.o mltaln9.o score.o constants.o
+
+HEADER = mltaln.h mtxutl.h
+DPHEADER = dp.h
+FFTHEADER = fft.h
+
+
+#CFLAG = -O3 -Wunused -Wreturn-type -Wshadow -pg
+CFLAG =  
+LIBS = -lm
+
+all : $(PROGS)
+	@echo done.
+
+mltaln.h : sueff.sed mltaln.h.src config.h
+	sed -f sueff.sed mltaln.h.src > mltaln.h
+
+ord : $(OBJORD)
+	$(CC) -o $@ $(OBJORD) $(CFLAG) $(LIBS)
+
+1itr : $(OBJ1ITR)
+	$(CC) -o $@ $(OBJ1ITR) $(CFLAG) $(LIBS)
+
+tb : $(OBJTB)
+	$(CC) -o $@ $(OBJTB) $(CFLAG) $(LIBS)
+
+tbfast : $(OBJTBFAST)
+	$(CC) -o $@ $(OBJTBFAST) $(CFLAG) $(LIBS)
+
+tditr : $(OBJTDITR)
+	$(CC) -o $@ $(OBJTDITR) $(CFLAG) $(LIBS)
+
+dvtditr : $(OBJDVTDITR)
+	$(CC) -o $@ $(OBJDVTDITR) $(CFLAG) $(LIBS)
+
+galn : $(OBJGALN)
+	$(CC) -o $@ $(OBJGALN) $(CFLAG) $(LIBS)
+
+gapfill : $(OBJGAPFILL)
+	$(CC) -o $@ $(OBJGAPFILL) $(CFLAG) $(LIBS)
+
+dndfast4 : $(OBJDNDFAST4)
+	$(CC) -o $@ $(OBJDNDFAST4) $(CFLAG) $(LIBS)
+
+dndfast3 : $(OBJDNDFAST3)
+	$(CC) -o $@ $(OBJDNDFAST3) $(CFLAG) $(LIBS)
+
+triplet : $(OBJTRIPLET)
+	$(CC) -o $@ $(OBJTRIPLET) $(CFLAG) $(LIBS)
+
+triplet3 : $(OBJTRIPLET3)
+	$(CC) -o $@ $(OBJTRIPLET3) $(CFLAG) $(LIBS)
+
+sextet3 : $(OBJSEXTET3)
+	$(CC) -o $@ $(OBJSEXTET3) $(CFLAG) $(LIBS)
+
+sextet4 : $(OBJSEXTET4)
+	$(CC) -o $@ $(OBJSEXTET4) $(CFLAG) $(LIBS)
+
+sextet5 : $(OBJSEXTET5)
+	$(CC) -o $@ $(OBJSEXTET5) $(CFLAG) $(LIBS)
+
+octet4 : $(OBJOCTET4)
+	$(CC) -o $@ $(OBJOCTET4) $(CFLAG) $(LIBS)
+
+dndpre : $(OBJDNDPRE)
+	$(CC) -o $@ $(OBJDNDPRE) $(CFLAG) $(LIBS)
+
+score : $(OBJSCORE)
+	$(CC) -o $@ $(OBJSCORE) $(CFLAG) $(LIBS)
+
+genMtx : $(OBJGENMTX)
+	$(CC) -o $@ $(OBJGENMTX) $(CFLAG) $(LIBS)
+
+gapfill.o : gapfill.c $(HEADER)
+	$(CC) $(CFLAG) -c gapfill.c
+
+mltaln9.o : mltaln9.c $(HEADER)
+	$(CC) $(CFLAG) -c mltaln9.c
+
+tddis.o : tddis.c $(HEADER)
+	$(CC) $(CFLAG) -c tddis.c
+
+constants.o : constants.c miyata.h miyata5.h gonnet.h DNA.h JTT.c $(HEADER)
+	$(CC) $(CFLAG) -c constants.c
+
+dp.o : dp.c 
+	$(CC) $(CFLAG) -c dp.c
+
+Calignm1.o : Calignm1.c $(HEADER) $(DPHEADER)
+	$(CC) $(CFLAG) -c Calignm1.c
+
+#A+++alignmm.o : SA+++alignmm.c $(HEADER) $(DPHEADER)
+#	$(CC) $(CFLAG) -c SA+++alignmm.c -o A+++alignmm.o
+
+A+++alignmm.o : Salignmm.c $(HEADER) $(DPHEADER)
+	$(CC) $(CFLAG) -c Salignmm.c -o A+++alignmm.o
+
+SAalignmm.o : SAalignmm.c $(HEADER) $(DPHEADER)
+	$(CC) $(CFLAG) -c SAalignmm.c -o SAalignmm.o
+
+ord.o : ord.c $(HEADER)
+	$(CC) $(CFLAG) -c ord.c
+
+1itr.o : 1itr.c $(HEADER)
+	$(CC) $(CFLAG) -c 1itr.c
+
+iteration.o : iteration.c $(HEADER)
+	$(CC) $(CFLAG) -c iteration.c
+
+tb.o : tb.c $(HEADER)
+	$(CC) $(CFLAG) -c tb.c
+
+tbfast.o : tbfast.c $(HEADER) $(FFTHEADER)
+	$(CC) $(CFLAG) -c tbfast.c
+
+tditr.o : tditr.c $(HEADER)
+	 $(CC) $(CFLAG) -c tditr.c
+
+dvtditr.o : dvtditr.c $(HEADER)
+	 $(CC) $(CFLAG) -c dvtditr.c
+
+tditeration.o : tditeration.c $(HEADER)
+	 $(CC) $(CFLAG) -c tditeration.c
+
+galn.o : galn.c $(HEADER) $(MTXHEADER)
+	$(CC) $(CFLAG) -c galn.c
+
+dndfast4.o : dndfast4.c $(HEADER) $(MTXHEADER)
+	$(CC) $(CFLAG) -c dndfast4.c
+
+dndfast3.o : dndfast3.c $(HEADER) $(MTXHEADER)
+	$(CC) $(CFLAG) -c dndfast3.c
+
+dndpre.o : dndpre.c $(HEADER)
+	$(CC) $(CFLAG) -c dndpre.c
+
+io.o : io.c $(HEADER) $(FFTHEADER)
+	$(CC) $(CFLAG) -c io.c
+
+nj.o : nj.c $(HEADER)
+	$(CC) $(CFLAG) -c nj.c
+
+treeOperation.o : treeOperation.c $(HEADER)
+	$(CC) $(CFLAG) -c treeOperation.c
+
+triplet.o : triplet.c $(HEADER) $(MTXHEADER)
+	$(CC) $(CFLAG) -c triplet.c
+
+triplet3.o : triplet3.c $(HEADER) $(MTXHEADER)
+	$(CC) $(CFLAG) -c triplet3.c
+
+sextet4.o : sextet4.c $(HEADER) $(MTXHEADER)
+	$(CC) $(CFLAG) -c sextet4.c
+
+sextet5.o : sextet5.c $(HEADER) $(MTXHEADER)
+	$(CC) $(CFLAG) -c sextet5.c
+
+sextet3.o : sextet3.c $(HEADER) $(MTXHEADER)
+	$(CC) $(CFLAG) -c sextet3.c
+
+octet4.o : octet4.c $(HEADER) $(MTXHEADER)
+	$(CC) $(CFLAG) -c octet4.c
+
+fft.o : fft.c $(HEADER) $(FFTHEADER)
+	$(CC) $(CFLAG) -c fft.c -O0
+
+fftFunctions.o : fftFunctions.c $(HEADER) $(FFTHEADER)
+	$(CC) $(CFLAG) -c fftFunctions.c
+
+Falign.o : Falign.c $(HEADER) $(FFTHEADER) $(MTXHEADER)
+	$(CC) $(CFLAG) -c Falign.c
+
+mtxutl.o : mtxutl.c 
+	$(CC) $(CFLAG) -c mtxutl.c
+
+score.o : score.c $(HEADER)
+	$(CC) $(CFLAG) -c score.c
+
+
+install : 
+	chmod 755 $(PROGS)
+	cp $(PROGS) $(BINDIR) 
+
+clean :
+	rm -f *.o *.a $(PROGS) 

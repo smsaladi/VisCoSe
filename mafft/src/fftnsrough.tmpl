@@ -1,0 +1,101 @@
+#! /bin/sh
+
+prog="";
+which gawk > /dev/null 2>&1 && prog="gawk";
+if [ "$prog" = ""  ] ; then
+	which nawk > /dev/null 2>&1  && prog="nawk";
+fi
+if [ "$prog" = ""  ] ; then
+	which awk > /dev/null 2>&1 && prog="awk";
+fi
+echo "prog = " $prog > "/dev/tty"
+
+#TMPDIR=/tmp/`basename $0`.`whoami`.$$.`date +%y%m%d%H%M%S`
+TMPDIR=./`basename $0`.`whoami`.$$.`date +%y%m%d%H%M%S`
+export TMPDIR 
+ORIDIR=`pwd`
+export ORIDIR
+umask 077
+mkdir  $TMPDIR  || exit 1
+trap "rm -r $TMPDIR; exit 1" 2
+#echo "$ORIDIR -> $TMPDIR"
+
+(
+cd $TMPDIR
+
+$prog '
+BEGIN {
+    prefix = ENVIRON["MAFFT_BINARIES"];
+	oridir = ENVIRON["ORIDIR"];
+    if( prefix == "" ) prefix = "_PREFIX";
+	infile = sprintf( "%s/%s", oridir, ARGV[1] );
+	close( infile );
+	while( getline < infile > 0 )
+	{
+		gsub( "\r", "\n" )
+		print > "infile";
+	}
+	fftoption = "-FA"
+	command = sprintf( "%s/splitseq infile 500", prefix );
+	res = system( command );
+
+	getline < "sp-count"
+	ngroup = 0 + $1
+
+	for( i=1; i<=ngroup; i++ )
+	{
+		printf( "Aligning group %d\n", i ) > "/dev/tty";
+		spfile = sprintf( "sp-%d", i );
+		alfile = sprintf( "al-%d", i );
+		system( "grep \"^[>|=]\" " spfile " | wc > seq-count" );
+		close( "seq-count" );
+		getline < "seq-count";
+		nseq = 0+$1
+		printf( "nseq = %d\n", nseq ) > "/dev/tty";
+		if( nseq == 1 )
+		{
+			system( "cp " spfile " " alfile );
+			break;
+		}
+		command = sprintf( "%s/sextet5 < " spfile " > /dev/null 2>&1", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast %s -x < " spfile " > /dev/null 2>&1; cat pre > \"%s\"", prefix, fftoption, alfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+	if( ngroup == 1 )
+	{
+		command = sprintf( "cat %s ", alfile );
+		system( command );
+		exit( 0 );
+	}
+	system( "cp al-1 alall" );
+	for( i=2; i<=ngroup; i++ )
+	{
+		command =  sprintf( "%s/galn -A alall al-%d > altmp", prefix, i );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in galn\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		system( "mv altmp alall" );
+	}
+	command = sprintf( "cat alall " );
+	system( command );
+	exit( 0 );
+}
+' $1
+)
+
+rm -r $TMPDIR
