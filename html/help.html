@@ -5,263 +5,263 @@
 <META content="MSHTML 6.00.2800.1170" name=GENERATOR></HEAD>
 <BODY text=#000000 bgColor=#ffffff>
 <TABLE cellPadding=5 width="100%" border=0 name="table">
-  <tr bgcolor=#eeeeff valign="middle" align="center"> 
-    <td bgcolor="#eeeeff"> 
-      <div align="center"><font face="Arial, Helvetica, sans-serif"><font size="2"><a href="http://viscose.ifg.uni-muenster.de/">Home</a></font></font></div>
+  <tr bgcolor=#eeeeff valign="middle" align="center">
+    <td bgcolor="#eeeeff">
+      <div align="center"><font face="Arial, Helvetica, sans-serif"><font size="2"><a href="/">Home</a></font></font></div>
     </td>
-    <td bgcolor="#eeeeff"> 
-      <div align="center"><font face="Arial, Helvetica, sans-serif"><b><font 
-      size=5>VisCoSe </font><font face="Arial, Helvetica, sans-serif" size=1>- 
+    <td bgcolor="#eeeeff">
+      <div align="center"><font face="Arial, Helvetica, sans-serif"><b><font
+      size=5>VisCoSe </font><font face="Arial, Helvetica, sans-serif" size=1>-
         Visualization and Comparison of consensus Sequences</font></b></font></div>
     </td>
-    <td bgcolor="#eeeeff"> 
+    <td bgcolor="#eeeeff">
       <div align="center"><a href="http://ifg-izkf.uni-muenster.de/"><img src="ifg_small.jpg" width="60" height="29" border="0"></a></div>
     </td>
   </tr>
-  <TBODY> 
-  <TR bgColor=#ddddff> 
-    <TD bgcolor="#ddddff" colspan="3"> 
+  <TBODY>
+  <TR bgColor=#ddddff>
+    <TD bgcolor="#ddddff" colspan="3">
       <DIV align=center><font size="2" face="Arial, Helvetica, sans-serif"><b><font size="3">Help</font></b></font></DIV>
     </TD>
   </TR>
-  <TR bgColor=#ccccff> 
+  <TR bgColor=#ccccff>
     <TD bgcolor="#ccccff" colspan="3"> <font size="2" face="Arial, Helvetica, sans-serif"><b><font size="3">Alignment</font></b><font size="3"><a name="alignment"></a></font><br>
-      The alignment has to be in FASTA format like as follows (no other formats 
+      The alignment has to be in FASTA format like as follows (no other formats
       are supported):</font><br>
       <pre><font size="2">   &gt; defline1
    AMNWEQQMS...
    &gt;defline2
    YYMSHHCWD...
    ...</font></pre>
-      <font face="Arial, Helvetica, sans-serif" size="2">Deflines have to start 
-      with a &quot;&gt;&quot;, and the following line(s) must consist of sequence 
-      data only. Deflines and sequence data have to be separated by <b>CRs</b> or <b>CR/LFs</b>.</font> 
+      <font face="Arial, Helvetica, sans-serif" size="2">Deflines have to start
+      with a &quot;&gt;&quot;, and the following line(s) must consist of sequence
+      data only. Deflines and sequence data have to be separated by <b>CRs</b> or <b>CR/LFs</b>.</font>
       <p>&nbsp;</p>
       <p><font size="2" face="Arial, Helvetica, sans-serif"><b><font size="3">Groups</font></b><font size="3"><a name="groups"></a></font><br>
-        Groups are used to simulate multiple datasets. Though VisCoSe is able 
-        to read multiple datasets using the commandline version, the VisCoSe website 
-        can handle one datasets at a time only. To enable the consensus sequence 
-        comparison feature for web usage of VisCoSe the user can define groups 
-        of sequences. The group definition is used to split the pasted or uploaded 
-        dataset into subsets. These subsets are then subjected to individual analysis 
-        by VisCoSe as if they were independant datasets. For example the group 
-        definition &quot;1-26;27-35,43-50;36-42"<font face="Arial, Helvetica, sans-serif"> 
+        Groups are used to simulate multiple datasets. Though VisCoSe is able
+        to read multiple datasets using the commandline version, the VisCoSe website
+        can handle one datasets at a time only. To enable the consensus sequence
+        comparison feature for web usage of VisCoSe the user can define groups
+        of sequences. The group definition is used to split the pasted or uploaded
+        dataset into subsets. These subsets are then subjected to individual analysis
+        by VisCoSe as if they were independant datasets. For example the group
+        definition &quot;1-26;27-35,43-50;36-42"<font face="Arial, Helvetica, sans-serif">
         defines the following groups:<br>
         </font></font> </p>
       <font size="2" face="Arial, Helvetica, sans-serif"></font>
       <pre><font size="2">   group 1: sequences 1 to 26
    group 2: sequences 27 to 35 <b>and</b> sequences 43-50<br>   group 3: sequences 36-42</font></pre>
-      <p><font size="2" face="Arial, Helvetica, sans-serif">For all defined groups, 
-        the sequence subset will be extracted. For each subset, VisCoSe generates 
-        a consensus sequence and a corresponding visualisation of it together 
-        with it's underlying alignment (if specified). The handling of the groups 
+      <p><font size="2" face="Arial, Helvetica, sans-serif">For all defined groups,
+        the sequence subset will be extracted. For each subset, VisCoSe generates
+        a consensus sequence and a corresponding visualisation of it together
+        with it's underlying alignment (if specified). The handling of the groups
         feature was implemented using the Bit::Vector-Library [1].</font></p>
       <p>&nbsp;</p>
-      <p><font size="2" face="Arial, Helvetica, sans-serif"><b><font size="3">Alignment 
+      <p><font size="2" face="Arial, Helvetica, sans-serif"><b><font size="3">Alignment
         / Coloring options<a name="opt1"></a><br>
-        </font></b>These options deal with dataset/subset handling and coloring 
-        of the histogram visualising the conservation rates as well as the underling 
+        </font></b>These options deal with dataset/subset handling and coloring
+        of the histogram visualising the conservation rates as well as the underling
         alignments:</font></p>
       <table width="100%" border="0" cellpadding="0" cellspacing="0">
-        <tr> 
-          <td colspan="2"><font size="2" face="Arial, Helvetica, sans-serif"><i>- 
-            Force realignment of subsets after splitting even if the source dataset 
+        <tr>
+          <td colspan="2"><font size="2" face="Arial, Helvetica, sans-serif"><i>-
+            Force realignment of subsets after splitting even if the source dataset
             was already aligned</i></font></td>
         </tr>
-        <tr> 
+        <tr>
           <td width="3%">&nbsp;</td>
-          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">If 
-            the dataset the user provided was already aligned <b>and</b> groups 
-            were defined, the default behaviour of VisCoSe is not to realign the 
-            resulting subsets but to preserve the original user alignment <b><i>(default: 
+          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">If
+            the dataset the user provided was already aligned <b>and</b> groups
+            were defined, the default behaviour of VisCoSe is not to realign the
+            resulting subsets but to preserve the original user alignment <b><i>(default:
             inactive)</i></b></font></td>
         </tr>
-        <tr> 
-          <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2"><i>- 
+        <tr>
+          <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2"><i>-
             Colorize the histogram in consensus colors</i></font></td>
         </tr>
-        <tr> 
+        <tr>
           <td width="3%">&nbsp;</td>
-          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">When 
-            activated, the columns of the conservation rate histogram are shown 
-            color-coded according to their conservation rate (<font 
-            color=#0000ff><b>blue</b></font> indicates <font 
-            color=#0000ff><b>0%</b></font>, <font color=#00ffff><b>cyan ~25%</b></font>, 
-            <font color=#00ff00><b>green ~50%</b></font>, <font 
-            color=#ffff00><b>yellow ~75%</b></font> and <b><font 
+          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">When
+            activated, the columns of the conservation rate histogram are shown
+            color-coded according to their conservation rate (<font
+            color=#0000ff><b>blue</b></font> indicates <font
+            color=#0000ff><b>0%</b></font>, <font color=#00ffff><b>cyan ~25%</b></font>,
+            <font color=#00ff00><b>green ~50%</b></font>, <font
+            color=#ffff00><b>yellow ~75%</b></font> and <b><font
             color=#ff0000>red ~100%</font></b> conservation) <i><b>(default: active)</b></i></font></td>
         </tr>
-        <tr> 
-          <td colspan="2"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif" size="2"><i>- 
+        <tr>
+          <td colspan="2"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif" size="2"><i>-
             Height of the conservation rate histogram</i></font></font></td>
         </tr>
-        <tr> 
+        <tr>
           <td width="3%">&nbsp;</td>
-          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">Specifies 
-            the height of the histogram illustrating the conservation rate for 
+          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">Specifies
+            the height of the histogram illustrating the conservation rate for
             each position of a consensus sequence<i><b> (default: 33)</b></i></font></td>
         </tr>
-        <tr> 
-          <td colspan="2"><i>- <font face="Arial, Helvetica, sans-serif"><font size="2">Show 
-            no </font><font face="Arial, Helvetica, sans-serif" size="2"> alignment</font></font> 
-            (<font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif" size="2">above 
+        <tr>
+          <td colspan="2"><i>- <font face="Arial, Helvetica, sans-serif"><font size="2">Show
+            no </font><font face="Arial, Helvetica, sans-serif" size="2"> alignment</font></font>
+            (<font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif" size="2">above
             consensus sequences</font></font>)</i></td>
         </tr>
-        <tr> 
+        <tr>
           <td width="3%">&nbsp;</td>
-          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">Activating 
-            this option prevents any visualisation of underlying alignments <i><b>(default: 
+          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">Activating
+            this option prevents any visualisation of underlying alignments <i><b>(default:
             inactive)</b></i></font></td>
         </tr>
-        <tr> 
-          <td colspan="2"><i><font face="Arial, Helvetica, sans-serif" size=2>- 
+        <tr>
+          <td colspan="2"><i><font face="Arial, Helvetica, sans-serif" size=2>-
             Show alignment, plain formatted</font></i></td>
         </tr>
-        <tr> 
+        <tr>
           <td width="3%">&nbsp;</td>
-          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">This 
-            option causes the underlying alignment to be shown on top of the consensus 
+          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">This
+            option causes the underlying alignment to be shown on top of the consensus
             sequence, thus allowing visualization of subsets <i><b>(default: inactive)</b></i></font></td>
         </tr>
-        <tr> 
-          <td colspan="2"><i><font face="Arial, Helvetica, sans-serif" size=2>- 
+        <tr>
+          <td colspan="2"><i><font face="Arial, Helvetica, sans-serif" size=2>-
             Show alignment, color formatted (overrides 'plain formatted')</font></i></td>
         </tr>
-        <tr> 
+        <tr>
           <td width="3%">&nbsp;</td>
-          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">As 
+          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">As
             above, except that the alignment is colorized as follows:<br>
-            if an amino acid of a sequence at position x is the same as the amino 
-            acid of the consensus at position x, the amino acid of the sequence 
-            is colorized according to the conservation rate. Activating this option 
-            overrides the option "plain formatted" of VisCoSe <i><b>(default: 
+            if an amino acid of a sequence at position x is the same as the amino
+            acid of the consensus at position x, the amino acid of the sequence
+            is colorized according to the conservation rate. Activating this option
+            overrides the option "plain formatted" of VisCoSe <i><b>(default:
             active)</b></i></font></td>
         </tr>
-        <tr> 
-          <td colspan="2"><i><font face="Arial, Helvetica, sans-serif" size=2>- 
-            Show alignment, color formatted for all amino acids (overrides 'color 
+        <tr>
+          <td colspan="2"><i><font face="Arial, Helvetica, sans-serif" size=2>-
+            Show alignment, color formatted for all amino acids (overrides 'color
             formatted', results in larger files)</font></i></td>
         </tr>
-        <tr> 
+        <tr>
           <td width="3%">&nbsp;</td>
-          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">As 
-            above, except that <b>each</b> amino acid in the alignment is colorized 
-            according to its conservation rate, regardless of the amino acid of 
-            the consensus sequence at that position. Activating this option overrides 
-            the options "plain formatted" and "color formatted" <i><b>(default: 
+          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">As
+            above, except that <b>each</b> amino acid in the alignment is colorized
+            according to its conservation rate, regardless of the amino acid of
+            the consensus sequence at that position. Activating this option overrides
+            the options "plain formatted" and "color formatted" <i><b>(default:
             inactive)</b></i></font></td>
         </tr>
       </table>
       <p>&nbsp;</p>
       <p><b><font size="3" face="Arial, Helvetica, sans-serif">Viewing options<a name="opt2"></a></font></b><br>
-        <font size="2" face="Arial, Helvetica, sans-serif">The following options 
-        directly influence the appearance of the results being presented using 
+        <font size="2" face="Arial, Helvetica, sans-serif">The following options
+        directly influence the appearance of the results being presented using
         HTML documents:</font></p>
       <table width="100%" border="0" cellpadding="0" cellspacing="0">
-        <tr> 
-          <td colspan="2"><font size="2" face="Arial, Helvetica, sans-serif"><i>- 
-            </i></font><i><font face="Arial, Helvetica, sans-serif"><font size="2">Background 
+        <tr>
+          <td colspan="2"><font size="2" face="Arial, Helvetica, sans-serif"><i>-
+            </i></font><i><font face="Arial, Helvetica, sans-serif"><font size="2">Background
             color</font></font></i></td>
         </tr>
-        <tr> 
+        <tr>
           <td width="3%">&nbsp;</td>
-          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">Specifies 
-            the background color for the HTML output. The web interface offers 
-            5 pre-defined colors: <b>white</b>, <b>lightgray</b>, <b>midgray</b>, 
-            <b>darkgray</b> and <b>black</b>. By using the commandline version 
-            of VisCoSe the user is able to use any background as well as foreground 
+          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">Specifies
+            the background color for the HTML output. The web interface offers
+            5 pre-defined colors: <b>white</b>, <b>lightgray</b>, <b>midgray</b>,
+            <b>darkgray</b> and <b>black</b>. By using the commandline version
+            of VisCoSe the user is able to use any background as well as foreground
             (= text) color by specifying using HTML tags <i><b>(default: white)</b></i></font></td>
         </tr>
-        <tr> 
-          <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2"><i>- 
-            </i></font><i><font face="Arial, Helvetica, sans-serif"><font size="2">Font 
-            size</font></font><font face="Arial, Helvetica, sans-serif" size="2"> 
+        <tr>
+          <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2"><i>-
+            </i></font><i><font face="Arial, Helvetica, sans-serif"><font size="2">Font
+            size</font></font><font face="Arial, Helvetica, sans-serif" size="2">
             </font></i></td>
         </tr>
-        <tr> 
+        <tr>
           <td width="3%">&nbsp;</td>
-          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">Specifies 
-            the font size for the HTML output. A size &lt;6 makes the text hard 
-            to read but can be useful for providing an overview. For changing 
-            the font size &quot;on-the-fly&quot; for already calculated results, 
-            please use the &quot;text zoom&quot; option in your browser (<i>&quot;View-&gt;Text 
-            Zoom</i>&quot; for Mozilla, <i>&quot;View-&gt;Text</i> Size&quot; 
+          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">Specifies
+            the font size for the HTML output. A size &lt;6 makes the text hard
+            to read but can be useful for providing an overview. For changing
+            the font size &quot;on-the-fly&quot; for already calculated results,
+            please use the &quot;text zoom&quot; option in your browser (<i>&quot;View-&gt;Text
+            Zoom</i>&quot; for Mozilla, <i>&quot;View-&gt;Text</i> Size&quot;
             for Internet Explorer) <i><b>(default: 8)</b></i></font></td>
         </tr>
-        <tr> 
-          <td colspan="2"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font size="2"><i>- 
+        <tr>
+          <td colspan="2"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font size="2"><i>-
             Character used for conservation rate histogram columns</i></font></font></font></td>
         </tr>
-        <tr> 
+        <tr>
           <td width="3%">&nbsp;</td>
-          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">Here 
-            the user may provide the character used by VisCoSe for &quot;drawing&quot; 
-            the histogram. In our opinion, &quot;|&quot; is most visually appealing, 
-            but other people may prefer another character like &quot;#&quot; <i><b>(default: 
+          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">Here
+            the user may provide the character used by VisCoSe for &quot;drawing&quot;
+            the histogram. In our opinion, &quot;|&quot; is most visually appealing,
+            but other people may prefer another character like &quot;#&quot; <i><b>(default:
             |)</b></i> </font></td>
         </tr>
-        <tr> 
-          <td colspan="2"><i>- <font face="Arial, Helvetica, sans-serif"><font size="2">Linebreak 
+        <tr>
+          <td colspan="2"><i>- <font face="Arial, Helvetica, sans-serif"><font size="2">Linebreak
             at character x</font></font></i></td>
         </tr>
-        <tr> 
+        <tr>
           <td width="3%">&nbsp;</td>
-          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">By 
-            activating this option and adjusting of the linebreak position, VisCoSe 
-            inserts line breaks at the specified position. The consensus sequence 
-            and the underlying alignments are then made up at position x, making 
-            printing of long alignments/consensus sequences more easy <i><b>(default: 
+          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">By
+            activating this option and adjusting of the linebreak position, VisCoSe
+            inserts line breaks at the specified position. The consensus sequence
+            and the underlying alignments are then made up at position x, making
+            printing of long alignments/consensus sequences more easy <i><b>(default:
             off)</b></i> </font></td>
         </tr>
       </table>
       <p>&nbsp;</p>
       <b><font size="3" face="Arial, Helvetica, sans-serif">Alphabet options</font></b><a name="opt3"></a><br>
-      <font face="Arial, Helvetica, sans-serif" size="2">Using the alphabet options, 
-      the user is able to additionally retrieve a VisCoSe result (consensus sequence 
+      <font face="Arial, Helvetica, sans-serif" size="2">Using the alphabet options,
+      the user is able to additionally retrieve a VisCoSe result (consensus sequence
       and underlying alignment) for a chosen reduced amino acid alphabet:<br>
       <br>
-      </font> 
+      </font>
       <table width="100%" border="0" cellpadding="0" cellspacing="0">
-        <tr> 
-          <td colspan="2"><font size="2" face="Arial, Helvetica, sans-serif"><i>- 
-            </i></font><i><font face="Arial, Helvetica, sans-serif"><font size="2">Alphabet 
+        <tr>
+          <td colspan="2"><font size="2" face="Arial, Helvetica, sans-serif"><i>-
+            </i></font><i><font face="Arial, Helvetica, sans-serif"><font size="2">Alphabet
             list </font></font></i></td>
         </tr>
-        <tr> 
+        <tr>
           <td width="3%">&nbsp;</td>
-          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">This 
-            box offers several chosen reduced amino acid alphabets, ranging from 
-            the most simplified &quot;HP model&quot; to more sophisticated alphabets 
-            like those from Murphy et al. (2000) or Li et al. (2003) (see <a href="alphabets.html">here</a> 
-            for references and descriptions). If the default alphabet &quot;None 
-            / Default 20 AA&quot; is chosen, VisCoSe will only calculate a consensus 
-            sequence and conservation rates for the standard alphabet consisting 
-            of the 20 amino acids found in proteins. If another alphabet is chosen, 
-            VisCoSe will translate the dataset(s) into the new (reduced) alphabet. 
-            Afterwards, another calculation is performed on the resulting reduced 
-            dataset, so that the user will get <b>two results</b> for each dataset/subset: 
-            one using the original 20 AA alphabet and another one using the reduced 
+          <td width="92%"><font face="Arial, Helvetica, sans-serif" size="2">This
+            box offers several chosen reduced amino acid alphabets, ranging from
+            the most simplified &quot;HP model&quot; to more sophisticated alphabets
+            like those from Murphy et al. (2000) or Li et al. (2003) (see <a href="alphabets.html">here</a>
+            for references and descriptions). If the default alphabet &quot;None
+            / Default 20 AA&quot; is chosen, VisCoSe will only calculate a consensus
+            sequence and conservation rates for the standard alphabet consisting
+            of the 20 amino acids found in proteins. If another alphabet is chosen,
+            VisCoSe will translate the dataset(s) into the new (reduced) alphabet.
+            Afterwards, another calculation is performed on the resulting reduced
+            dataset, so that the user will get <b>two results</b> for each dataset/subset:
+            one using the original 20 AA alphabet and another one using the reduced
             alphabet <i><b>(default: &quot;None / Default 20 AA&quot;)</b></i></font></td>
         </tr>
       </table>
-      <p><font face="Arial, Helvetica, sans-serif" size="2"> All implemented alphabets 
-        are described <a href="alphabets.html">here</a>. If you think there is 
-        an important alphabet missing, please <a href="mailto:michael.spitzer@uni-muenster.de">drop 
-        me a note</a> together with a description of the alphabet. I will add 
+      <p><font face="Arial, Helvetica, sans-serif" size="2"> All implemented alphabets
+        are described <a href="alphabets.html">here</a>. If you think there is
+        an important alphabet missing, please <a href="mailto:michael.spitzer@uni-muenster.de">drop
+        me a note</a> together with a description of the alphabet. I will add
         reduced alphabets on such a &quot;per-request&quot; basis.</font></p>
       <p>&nbsp;</p>
       <p><font face="Arial, Helvetica, sans-serif" size="2"><b><font size="3">References</font></b><br>
         <b>(1)</b> <a href="http://www.engelschall.com/%7Esb/download/Bit-Vector/">http://www.engelschall.com/~sb/download/Bit-Vector</a></font></p>
       </TD>
   </TR>
-  <TR bgColor=#ddddff> 
+  <TR bgColor=#ddddff>
     <TD bgcolor="#ddddff" colspan="3">&nbsp;</TD>
   </TR>
-  <TR bgColor=#eeeeff> 
-    <TD bgcolor="#eeeeff" colspan="3"><FONT face="Arial, Helvetica, sans-serif" size=2>For 
-      bug reports, suggestions etc. please contact <A 
+  <TR bgColor=#eeeeff>
+    <TD bgcolor="#eeeeff" colspan="3"><FONT face="Arial, Helvetica, sans-serif" size=2>For
+      bug reports, suggestions etc. please contact <A
       href="mailto:michael.spitzer@uni-muenster.de">michael.spitzer@uni-muenster.de</A></FONT></TD>
   </TR>
-  </TBODY> 
+  </TBODY>
 </TABLE>
 </BODY></HTML>

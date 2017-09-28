@@ -13,8 +13,9 @@
 #require v5.6.1;
 use diagnostics;                                            # verbose warning- and error-messages.
 use strict;                                                 # This is a "must-have".
+use FindBin qw($Bin);
 
-use lib '/var/www/vhosts/viscose/cgi-bin';                  # add path where my custom Perl-Modules reside (~/bin/perl/)
+use lib $Bin;                                               # add path where my custom Perl-Modules reside
 
 use IFG::Alignments;                                        # collected useful stuff done (mostly) by me, myself, and I ;-)
 use IFG::NutsnBolts;                                        # useful stuff again
@@ -37,7 +38,7 @@ sub parse_args {
    my %param         = ();              # will be filled with the parameters from @ARGV
 
    for (my $i = 0; $i < scalar @args; $i++) {
-      CASE: { 
+      CASE: {
          if ($args[$i] eq '-in')             { $param{'in'}             = $args[++$i]; last CASE; }
          if ($args[$i] eq '-groups')         { $param{'groups'}         = $args[++$i]; last CASE; }
          if ($args[$i] eq '-fra')            { $param{'fra'}            = 1;           last CASE; }
@@ -169,7 +170,7 @@ sub consensus_generation_and_formatting {
    if ($param->{'verbose'}) { print "Writing single consensus in HTML and FASTA format:\n"; }
    &VisCoSe::ConsensusTools::write_consensus_for_alignments($conss, $consscode, $htmlfile, $suffix, $param);                  # writes FASTA- and HTML-consensus for each *single* input dataset
    if ($param->{'verbose'}) { print "done\n\n"; }
-   
+
    return ($conss, $consscode, $consensus, $seq);
 }
 

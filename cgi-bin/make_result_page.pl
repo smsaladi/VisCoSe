@@ -1,18 +1,20 @@
 #! /usr/bin/perl -w
-###################################################################################################
-# interface.pl
-# (c) 2003 Michael Spitzer, IFG-IZKF
 
-use diagnostics;                                            # verbose warning- and error-messages.
-use strict;                                                 # This is a "must-have".
+# make_result_page.pl
+# (c) 2003 Michael Spitzer, IFG-IZKF
+# (c) 2017 Shyam Saladi, Caltech
+
+use diagnostics;                          # verbose warning- and error-messages.
+use strict;                               # This is a "must-have".
 use CGI::Carp qw(fatalsToBrowser);
 use Data::Dumper;
+use FindBin qw($Bin);
 
-use constant debug => 0;                                                            # set to '1' for debug messages
-use constant server_root => '/var/www/vhosts/viscose';                    # root directory of (virtual) webserver
-use constant cgi_dir     => '/var/www/vhosts/viscose/cgi-bin';
-use constant temp_dir    => '/var/www/vhosts/viscose/temp';
-use constant link_url    => 'https://viscose.professa.de/temp';
+use constant debug => 0;                  # set to '1' for debug messages
+use constant temp_dir    => $Bin . '/../temp';
+use constant cgi_dir     => $Bin;
+use constant mafft_bin   => $Bin . '/mafft';
+use constant link_url    => 'https://viscose.herokuapp.com/temp/';
 
 sub parse_args {
 # parses the arguments given via command line and builds a hash which will be returned.
@@ -247,12 +249,7 @@ sub make_links {
                '<TABLE BORDER=0 CELLSPACING="0" CELLPADDING="4" WIDTH="100%">',
                '   <TR bgcolor="#EEEEFF">',
                '      <TD><font face="Arial, Helvetica, sans-serif">',
-               '         You can bookmark this page and come back any time later',
-               '      </TD>',
-               '   </TR>',
-               '   <TR bgcolor="#EEEEFF">',
-               '      <TD><font face="Arial, Helvetica, sans-serif">',
-               '         <B>Jobs older than a week will be deleted from our server!</B>',
+               '         <B>Job results are ephemeral. They will probably be gone within the hour!</B>',
                '      </TD>',
                '   </TR>',
                '</TABLE>',
@@ -282,7 +279,6 @@ sub delete_files {
    my $log        = '';
 
    chdir(temp_dir.'/'.$param->{'dir'});
-   $log = `rm viscose.sh`;
 }
 
 ### main ##########################################################################################

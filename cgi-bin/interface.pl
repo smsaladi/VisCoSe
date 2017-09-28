@@ -1,25 +1,26 @@
-#! /usr/bin/perl -wT
-###################################################################################################
+#! /usr/bin/perl -w
+
 # interface.pl
 # (c) 2003 Michael Spitzer, IFG-IZKF
+# (c) 2017 Shyam Saladi, Caltech
 
-use diagnostics;    # verbose warning- and error-messages.
-use strict;         # This is a "must-have".
+use diagnostics;                # verbose warning- and error-messages.
+use strict;                     # This is a "must-have".
 #use CGI::Carp qw(fatalsToBrowser);
 use CGI qw/:standard/;
 use POSIX;
 use File::Basename;
 use Data::Dumper;
+use FindBin qw($Bin);
 
-use constant debug => 0;    # set to '1' for debug messages
+use constant debug => 1;        # set to '1' for debug messages
 
-use constant server_root => '/var/www/vhosts/viscose';           # root directory of (virtual) webserver
-use constant temp_dir    => '/var/www/vhosts/viscose/temp';
-use constant cgi_dir     => '/var/www/vhosts/viscose/cgi-bin';
-use constant mafft_bin   => '/var/www/vhosts/viscose/cgi-bin/mafft';
-use constant link_url    => 'https://viscose.professa.de/temp';
+use constant temp_dir    => $Bin . '/../temp';
+use constant cgi_dir     => $Bin;
+use constant mafft_bin   => $Bin . '/mafft';
+use constant link_url    => 'https://viscose.herokuapp.com/temp/';
 
-
+$ENV{'MAFFT_BINARIES'}  = mafft_bin;
 sub print_header {
     print 'Content-type: text/html', "\n\n", '<HTML>', "\n", '<HEAD>', "\n", '<TITLE>Status of VisCoSe: interface.pl</TITLE>', "\n", '</HEAD>', "\n", '<PRE>', "\n", 'Status of VisCoSe: interface.pl (interface script for consensus visualization):', "\n",
       '--', "\n\n";
@@ -239,6 +240,7 @@ sub print_parameters {
     }
     print "\n";
     mkdir( temp_dir . '/' . $param->{'dir'} ) or die ">>> [IOErr] Could not create temporary directory for alignment data (job-ID '" . $param->{'dir'} . "')! Contact spitzem\@uni-muenster.de!\n";
+    chdir( temp_dir . '/' . $param->{'dir'} );
     write_temp_resultpage($param);
     print 'Temporary result page (may be used for bookmarking prior to job completion):' . "\n" . '<A HREF="' . link_url . '/' . $param->{'dir'} . '/viscose_results.html" target="_blank">viscose_results.html</A>' . "\n\n\n\n";
     return $param;
@@ -329,16 +331,10 @@ sub start_viscose_script {
     }
     if (debug) { print "\n\ncommandline: '$shellstring'\n"; }
 
-    chdir( temp_dir . '/' . $param->{'dir'} );
     ($shellstring) = $shellstring =~ m#^(.*)$#;    # untaint '$shellstring' the *INSECURE* way coz we know what's inside!!! Otherwise correct untainting would be advised!
-    open( _shell_, ">viscose.sh" ) or die "Fatal Error! Could not start VisCoSe!\n";
-    print _shell_ 'cd ' . temp_dir . '/' . $param->{'dir'} . "\n" . $shellstring . ' |tee viscose.log' . "\n" . cgi_dir . '/make_result_page.pl -dir ' . $param->{'dir'} . ' -src ' . $param->{'source_filename'} . "\n";
-    close(_shell_);
-    chmod( 0777, 'viscose.sh' );
+    system($shellstring . ' | tee viscose.log');
+    system(cgi_dir . '/make_result_page.pl -dir ' . $param->{'dir'} . ' -src ' . $param->{'source_filename'});
 
-    #$shellstring = 'qsub -cwd -q emb101.q,emb102.q,emb103.q,emb104.q,emb105.q,emb106.q,emb107.q,emb108.q,emb109.q,emb110.q,emb111.q,emb112.q,emb113.q,emb115.q,emb116.q,emb117.q,emb118.q -N VisCoSe_'.$param->{'dir'}.' -V ./viscose.sh';
-    #$shellstring = 'qsub -cwd -N VisCoSe_'.$param->{'dir'}.' -V ./viscose.sh';
-    $shellstring = temp_dir . '/' . $param->{'dir'} . '/viscose.sh &';
     $log         = `$shellstring`;
     if (debug) { chomp($log); print "Shellmessage: '$log'\nShellstring: '$shellstring'\n"; }
 
@@ -374,15 +370,6 @@ $| = 1;
 umask(0000);    # set 'rw(x)' for all user, group, other
 
 &print_header();    # print correct HTML header information
-
-# 'mafft_general' holds only the mafft-shellscripts! I modified those to decide at runtime
-#$ENV{'LD_LIBRARY_PATH'} = '/v/sge/lib/glinux';
-#$ENV{'PATH'}            = '/bin:/usr/bin:/usr/local/bin:/v/webserver/viscose/cgi-bin/mafft_general:/v/sge/bin/glinux';
-#$ENV{'PATH'}            = '/bin:/usr/bin:/usr/local/bin:/v/webserver/viscose/cgi-bin/mafft_388:/v/sge/bin/glinux';
-#$ENV{'MANPATH'}         = '/v/sge/man';
-#$ENV{'SGE_ROOT'}        = '/v/sge';
-$ENV{'PATH'}            = '/bin:/usr/bin:' . mafft_bin;
-$ENV{'MAFFT_BINARIES'}  = mafft_bin;
 
 if (debug) { print "Extracting parameters from FORM data..."; }
 my $param = &extract_data();             # get the single data from all FORM fields

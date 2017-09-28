@@ -5,288 +5,288 @@
 <META content="MSHTML 6.00.2800.1170" name=GENERATOR></HEAD>
 <BODY text=#000000 bgColor=#ffffff>
 <TABLE cellPadding=5 width="100%" border=0 name="table">
-  <tr bgcolor=#eeeeff valign="middle" align="center"> 
-    <td bgcolor="#eeeeff"> 
-      <div align="center"><font face="Arial, Helvetica, sans-serif"><font size="2"><a href="http://viscose.ifg.uni-muenster.de/">Home</a></font></font></div>
+  <tr bgcolor=#eeeeff valign="middle" align="center">
+    <td bgcolor="#eeeeff">
+      <div align="center"><font face="Arial, Helvetica, sans-serif"><font size="2"><a href="/">Home</a></font></font></div>
     </td>
-    <td bgcolor="#eeeeff"> 
-      <div align="center"><font face="Arial, Helvetica, sans-serif"><b><font 
-      size=5>VisCoSe </font><font face="Arial, Helvetica, sans-serif" size=1>- 
+    <td bgcolor="#eeeeff">
+      <div align="center"><font face="Arial, Helvetica, sans-serif"><b><font
+      size=5>VisCoSe </font><font face="Arial, Helvetica, sans-serif" size=1>-
         Visualization and Comparison of consensus Sequences</font></b></font></div>
     </td>
-    <td bgcolor="#eeeeff"> 
+    <td bgcolor="#eeeeff">
       <div align="center"><a href="http://ifg-izkf.uni-muenster.de/"><img src="ifg_small.jpg" width="60" height="29" border="0"></a></div>
     </td>
   </tr>
-  <TBODY> 
-  <TR bgColor=#ddddff valign="middle" align="center"> 
-    <TD colspan="3"> 
-      <DIV align=center> <A href="mailto:michael.spitzer@uni-muenster.de"><FONT 
-      face="Arial, Helvetica, sans-serif" size=2>Michael Spitzer</FONT></A><FONT 
-      face="Arial, Helvetica, sans-serif" size=2>, <A 
-      href="mailto:fuellen@uni-muenster.de">Georg Fuellen</A>, <A 
-      href="mailto:cullen@ogham.de">Paul Cullen</A>, and <A 
+  <TBODY>
+  <TR bgColor=#ddddff valign="middle" align="center">
+    <TD colspan="3">
+      <DIV align=center> <A href="mailto:michael.spitzer@uni-muenster.de"><FONT
+      face="Arial, Helvetica, sans-serif" size=2>Michael Spitzer</FONT></A><FONT
+      face="Arial, Helvetica, sans-serif" size=2>, <A
+      href="mailto:fuellen@uni-muenster.de">Georg Fuellen</A>, <A
+      href="mailto:cullen@ogham.de">Paul Cullen</A>, and <A
       href="mailto:stefan.lorkowski@uni-muenster.de">Stefan Lorkowski</A></FONT><BR>
-        <A href="http://www.uni-muenster.de/"><FONT 
+        <A href="http://www.uni-muenster.de/"><FONT
       face="Arial, Helvetica, sans-serif" size=2>University of Muenster, Germany</FONT></A></DIV>
     </TD>
   </TR>
-  <TR bgColor=#ccccff> 
-    <TD colspan="3"> 
-      <P><FONT face="Arial, Helvetica, sans-serif" 
+  <TR bgColor=#ccccff>
+    <TD colspan="3">
+      <P><FONT face="Arial, Helvetica, sans-serif"
       size=3><B>ABSTRACT</B><BR>
-        <FONT size=2>VisCoSe is a <A 
-      href="http://viscose.ifg.uni-muenster.de/">WWW service</A> and a <A 
-      href="http://viscose.ifg.uni-muenster.de/html/download.html">stand-alone 
-        command line Perl script</A> for visualizing and comparing consensus sequences 
-        of protein and nucleotide sequences. The input is a set of aligned or 
-        unaligned sequences, which in the latter case is automatically aligned. 
-        By defining groups (WWW service and stand-alone version) or by submitting 
-        the input in the form of multiple datasets (stand-alone version only), 
-        the user may define subsets of sequences. VisCoSe generates the consensus 
-        for each subset and an alignment of the consensus sequences that is visualized 
-        using HTML. Optionally, VisCoSe can additionally calculate consensus sequences 
-        and alignment visualizations on the basis of &quot;reduced alignments&quot;. 
-        The user may choose one of a set of reduced amino acid alphabets and VisCoSe 
-        will then translate all datasets/subsets and calculate the consensus sequence 
-        and conservation rates for these data. </FONT></FONT><FONT face="Arial, Helvetica, sans-serif" 
-      size=3><FONT size=2>The visualization of each single consensus sequence 
-        along with its conservation rates for each position and the underlying 
-        alignment can be accessed via hyperlinks. VisCoSe is the only interface 
-        currently available that simultaneously calculates consensus sequences 
+        <FONT size=2>VisCoSe is a <A
+      href="http://viscose.ifg.uni-muenster.de/">WWW service</A> and a <A
+      href="https://github.com/smsaladi/VisCoSe">stand-alone
+        command line Perl script</A> for visualizing and comparing consensus sequences
+        of protein and nucleotide sequences. The input is a set of aligned or
+        unaligned sequences, which in the latter case is automatically aligned.
+        By defining groups (WWW service and stand-alone version) or by submitting
+        the input in the form of multiple datasets (stand-alone version only),
+        the user may define subsets of sequences. VisCoSe generates the consensus
+        for each subset and an alignment of the consensus sequences that is visualized
+        using HTML. Optionally, VisCoSe can additionally calculate consensus sequences
+        and alignment visualizations on the basis of &quot;reduced alignments&quot;.
+        The user may choose one of a set of reduced amino acid alphabets and VisCoSe
+        will then translate all datasets/subsets and calculate the consensus sequence
+        and conservation rates for these data. </FONT></FONT><FONT face="Arial, Helvetica, sans-serif"
+      size=3><FONT size=2>The visualization of each single consensus sequence
+        along with its conservation rates for each position and the underlying
+        alignment can be accessed via hyperlinks. VisCoSe is the only interface
+        currently available that simultaneously calculates consensus sequences
         of multiple datasets and automatically compares these consensus sequences.</FONT></FONT></P>
-      <P><FONT face="Arial, Helvetica, sans-serif" 
+      <P><FONT face="Arial, Helvetica, sans-serif"
       size=3><B>DESCRIPTION</B><BR>
-        <FONT size=2>VisCoSe provides an easy way for calculating and visualizing 
-        consensus sequences of nucleotide sequences and of large protein sequences 
-        and is the only tool currently available that calculates and visualizes 
-        the comparison of multiple consensus sequences. VisCoSe allows both the 
-        visualization of consensus sequences and conservation rates for single 
-        as well as for multiple alignments/datasets. Unaligned datasets are aligned 
-        by VisCoSe using the multiple alignment program fftnsi from the <A 
-      href="http://www.biophys.kyoto-u.ac.jp/~katoh/programs/align/mafft/">MAFFT</A> 
+        <FONT size=2>VisCoSe provides an easy way for calculating and visualizing
+        consensus sequences of nucleotide sequences and of large protein sequences
+        and is the only tool currently available that calculates and visualizes
+        the comparison of multiple consensus sequences. VisCoSe allows both the
+        visualization of consensus sequences and conservation rates for single
+        as well as for multiple alignments/datasets. Unaligned datasets are aligned
+        by VisCoSe using the multiple alignment program fftnsi from the <A
+      href="http://www.biophys.kyoto-u.ac.jp/~katoh/programs/align/mafft/">MAFFT</A>
         library, version 3.85 (Katoh et al., 2002).</FONT></FONT></P>
-      <P><FONT face="Arial, Helvetica, sans-serif" size=2>VisCoSe is available 
-        as a <A 
-      href="http://viscose.ifg.uni-muenster.de/html/download.html">stand-alone 
-        command line Perl script</A> and a <A 
-      href="http://viscose.ifg.uni-muenster.de/">HTML-based web application</A>. 
-        It is not necessary to handle large and complex parameter lists. The user 
-        can choose from a reasonable set of visualizing parameters (see below). 
-        The resulting graphical presentation of the consensus sequences and the 
-        conservation rates of each amino acid are clear and straightforward (<A 
-      href="http://viscose.ifg.uni-muenster.de/html/example.html">see examples</A>). 
-        Another advantage is the presentation of the results by HTML. Since both 
-        the sequences and the alignments are shown continuously in full length 
-        by default, it is simple to identify highly conserved regions and assign 
-        them to the sequence. Moreover, the user has the possibility to choose 
-        one of a set of reduced amino acid alphabets (see <a href="alphabets.html">here</a> 
-        for a description). In that case, VisCoSe will translate the alignment(s) 
-        into reduced code and additionally calculate consensus sequences and (if 
-        specified) alignment visualisations. We recommend the WWW browser Mozilla 
+      <P><FONT face="Arial, Helvetica, sans-serif" size=2>VisCoSe is available
+        as a <A
+      href="http://viscose.ifg.uni-muenster.de/html/download.html">stand-alone
+        command line Perl script</A> and a <A
+      href="http://viscose.ifg.uni-muenster.de/">HTML-based web application</A>.
+        It is not necessary to handle large and complex parameter lists. The user
+        can choose from a reasonable set of visualizing parameters (see below).
+        The resulting graphical presentation of the consensus sequences and the
+        conservation rates of each amino acid are clear and straightforward (<A
+      href="http://viscose.ifg.uni-muenster.de/html/example.html">see examples</A>).
+        Another advantage is the presentation of the results by HTML. Since both
+        the sequences and the alignments are shown continuously in full length
+        by default, it is simple to identify highly conserved regions and assign
+        them to the sequence. Moreover, the user has the possibility to choose
+        one of a set of reduced amino acid alphabets (see <a href="alphabets.html">here</a>
+        for a description). In that case, VisCoSe will translate the alignment(s)
+        into reduced code and additionally calculate consensus sequences and (if
+        specified) alignment visualisations. We recommend the WWW browser Mozilla
         because of its fast scrolling abilities and high compatibility. </FONT></P>
-      <P><FONT face="Arial, Helvetica, sans-serif" size=2>The use of VisCoSe is 
+      <P><FONT face="Arial, Helvetica, sans-serif" size=2>The use of VisCoSe is
         simple and the following input options are available:</FONT></P>
       <table width="100%" border="0" cellpadding="1" cellspacing="0">
-        <tr align="center"> 
-          <td valign="top" align="left" width="30"> 
+        <tr align="center">
+          <td valign="top" align="left" width="30">
             <div align="left"><b><font face="Arial, Helvetica, sans-serif" size="2">(1)</font></b></div>
           </td>
-          <td align="left" valign="top"> 
-            <div align="left"><font face="Arial, Helvetica, sans-serif" size=2>It 
-              is possible to use a single unaligned dataset of protein or nucleotide 
-              sequences in FASTA format. In this case, VisCoSe uses MAFFT to align 
-              the dataset. Multiple datasets can be "simulated" by using a single 
-              dataset as input and specifying "groups", which divide the dataset 
-              into two or more single subsets. VisCoSe then produces sequence 
-              alignments for each subset. In this case, the resulting consensus 
+          <td align="left" valign="top">
+            <div align="left"><font face="Arial, Helvetica, sans-serif" size=2>It
+              is possible to use a single unaligned dataset of protein or nucleotide
+              sequences in FASTA format. In this case, VisCoSe uses MAFFT to align
+              the dataset. Multiple datasets can be "simulated" by using a single
+              dataset as input and specifying "groups", which divide the dataset
+              into two or more single subsets. VisCoSe then produces sequence
+              alignments for each subset. In this case, the resulting consensus
               sequences are subjected to multiple alignment.</font></div>
           </td>
         </tr>
-        <tr align="center"> 
-          <td valign="top" align="left" width="30"> 
+        <tr align="center">
+          <td valign="top" align="left" width="30">
             <div align="left"><b><font face="Arial, Helvetica, sans-serif" size="2">(2)</font></b></div>
           </td>
-          <td align="left" valign="top"> 
-            <div align="left"><font face="Arial, Helvetica, sans-serif" size=2>A 
-              pre-calculated alignment of a protein or nucleotide sequence set 
-              can be entered that has been produced using a method other than 
-              MAFFT, such as CLUSTAL W or DIALIGN. Here also, groups can be defined 
+          <td align="left" valign="top">
+            <div align="left"><font face="Arial, Helvetica, sans-serif" size=2>A
+              pre-calculated alignment of a protein or nucleotide sequence set
+              can be entered that has been produced using a method other than
+              MAFFT, such as CLUSTAL W or DIALIGN. Here also, groups can be defined
               to specify independent subsets.</font></div>
           </td>
         </tr>
-        <tr align="center"> 
-          <td valign="top" align="left" width="30"> 
+        <tr align="center">
+          <td valign="top" align="left" width="30">
             <div align="left"><b><font face="Arial, Helvetica, sans-serif" size="2">(3)</font></b></div>
           </td>
-          <td align="left" valign="top"> 
-            <div align="left"><font face="Arial, Helvetica, sans-serif" size=2>Using 
-              the stand-alone version, it is possible to enter two or more different 
-              datasets consisting of either aligned or unaligned sequences. In 
+          <td align="left" valign="top">
+            <div align="left"><font face="Arial, Helvetica, sans-serif" size=2>Using
+              the stand-alone version, it is possible to enter two or more different
+              datasets consisting of either aligned or unaligned sequences. In
               the latter case, the sequences are automatically aligned.</font></div>
           </td>
         </tr>
       </table>
-      <P><FONT face="Arial, Helvetica, sans-serif" size=2>VisCoSe automatically 
-        calculates the consensus for each alignment following the relative majority 
-        rule and compiles the consensus into FASTA format. The grade of conservation 
-        at each position is compiled into a color scheme ranging from dark blue 
-        (indicating no conservation) to red (indicating high conservation) and 
+      <P><FONT face="Arial, Helvetica, sans-serif" size=2>VisCoSe automatically
+        calculates the consensus for each alignment following the relative majority
+        rule and compiles the consensus into FASTA format. The grade of conservation
+        at each position is compiled into a color scheme ranging from dark blue
+        (indicating no conservation) to red (indicating high conservation) and
         a histogram indicating grades of conservation.</FONT></P>
-      <P><FONT face="Arial, Helvetica, sans-serif" size=2>To access the results 
+      <P><FONT face="Arial, Helvetica, sans-serif" size=2>To access the results
         generated by VisCoSe, the following output is produced:</FONT></P>
       <table width="100%" border="0" cellpadding="1" cellspacing="0">
-        <tr align="center"> 
-          <td valign="top" align="left" width="30"> 
+        <tr align="center">
+          <td valign="top" align="left" width="30">
             <div align="left"><b><font face="Arial, Helvetica, sans-serif" size="2">(1)</font></b></div>
           </td>
-          <td align="left" valign="top"> 
-            <div align="left"><font face="Arial, Helvetica, sans-serif" size=2>A 
-              zipped TAR archive containing all results and intermediate data 
+          <td align="left" valign="top">
+            <div align="left"><font face="Arial, Helvetica, sans-serif" size=2>A
+              zipped TAR archive containing all results and intermediate data
               such as aligned data subsets.</font></div>
           </td>
         </tr>
-        <tr align="center"> 
-          <td valign="top" align="left" width="30"> 
+        <tr align="center">
+          <td valign="top" align="left" width="30">
             <div align="left"><b><font face="Arial, Helvetica, sans-serif" size="2">(2)</font></b></div>
           </td>
-          <td align="left" valign="top"> 
-            <div align="left"><font face="Arial, Helvetica, sans-serif" size=2>The 
-              sequence dataset and user-defined groups of sequences as provided 
+          <td align="left" valign="top">
+            <div align="left"><font face="Arial, Helvetica, sans-serif" size=2>The
+              sequence dataset and user-defined groups of sequences as provided
               by the user.</font></div>
           </td>
         </tr>
-        <tr align="center"> 
-          <td valign="top" align="left" width="30"> 
+        <tr align="center">
+          <td valign="top" align="left" width="30">
             <div align="left"><b><font face="Arial, Helvetica, sans-serif" size="2">(3)</font></b></div>
           </td>
-          <td align="left" valign="top"> 
-            <div align="left"><font face="Arial, Helvetica, sans-serif" size=2>The 
-              consensus of each input dataset (or user-defined group) in FASTA 
-              format and in colorized HTML format. If a reduced alphabet was chosen, 
-              VisCoSe <i>additionally</i> calculates the consensus sequence for 
+          <td align="left" valign="top">
+            <div align="left"><font face="Arial, Helvetica, sans-serif" size=2>The
+              consensus of each input dataset (or user-defined group) in FASTA
+              format and in colorized HTML format. If a reduced alphabet was chosen,
+              VisCoSe <i>additionally</i> calculates the consensus sequence for
               the resulting reduced alignment.</font></div>
           </td>
         </tr>
-        <tr align="center"> 
+        <tr align="center">
           <td valign="top" align="left" width="30"><b><font face="Arial, Helvetica, sans-serif" size="2">(4)</font></b></td>
-          <td align="left" valign="top"><font face="Arial, Helvetica, sans-serif" size=2>The 
-            alignment of the consensus sequences colorized and illustrated according 
-            to their column-wise conservation rate. If a reduced alphabet was 
-            chosen, VisCoSe <i>additionally</i> visualizes the resulting reduced 
+          <td align="left" valign="top"><font face="Arial, Helvetica, sans-serif" size=2>The
+            alignment of the consensus sequences colorized and illustrated according
+            to their column-wise conservation rate. If a reduced alphabet was
+            chosen, VisCoSe <i>additionally</i> visualizes the resulting reduced
             alignment.</font></td>
         </tr>
-        <tr align="center"> 
+        <tr align="center">
           <td valign="top" align="left" width="30"><font face="Arial, Helvetica, sans-serif" size="2"><b>(5)</b></font></td>
-          <td align="left" valign="top"><font face="Arial, Helvetica, sans-serif" size="2">The 
-            alignment and consensus sequences in a reduced code giving information 
+          <td align="left" valign="top"><font face="Arial, Helvetica, sans-serif" size="2">The
+            alignment and consensus sequences in a reduced code giving information
             on chemical properties of the amino acid residues if chosen.</font></td>
         </tr>
       </table>
       <P><font face="Arial, Helvetica, sans-serif" size=3><b>OPTIONS</b></font><br>
-        <FONT face="Arial, Helvetica, sans-serif" size=2>The user controls the 
-        VisCoSe output using a few options, mainly affecting realigning behavior 
-        of VisCoSe, the presentation of the alignment on which a consensus is 
-        based and the conservation graph appearance. The options available are 
+        <FONT face="Arial, Helvetica, sans-serif" size=2>The user controls the
+        VisCoSe output using a few options, mainly affecting realigning behavior
+        of VisCoSe, the presentation of the alignment on which a consensus is
+        based and the conservation graph appearance. The options available are
         described in detail on the <a href="help.html">help page</a>.</FONT></P>
       <p><FONT face="Arial, Helvetica, sans-serif" size=3><B>PLANNED ENHANCEMENTS</B><BR>
-        <FONT size=2>We plan to implement the following enhancements of the current 
+        <FONT size=2>We plan to implement the following enhancements of the current
         version of VisCoSe:<BR>
-        · Different methods for multiple alignment such as <A 
-      href="http://www.ebi.ac.uk/clustalw/">CLUSTAL W</A></FONT><font face="Arial, Helvetica, sans-serif" size=3><font size=2> 
-        (Thompson et al., 1994)</font></font><FONT size=2>, <A 
-      href="http://bibiserv.techfak.uni-bielefeld.de/dialign/">DIALIGN</A> (Morgenstern, 
-        1999) and <A href="http://www.ch.embnet.org/software/TCoffee.html">TCOFFEE</A> 
+        ï¿½ Different methods for multiple alignment such as <A
+      href="http://www.ebi.ac.uk/clustalw/">CLUSTAL W</A></FONT><font face="Arial, Helvetica, sans-serif" size=3><font size=2>
+        (Thompson et al., 1994)</font></font><FONT size=2>, <A
+      href="http://bibiserv.techfak.uni-bielefeld.de/dialign/">DIALIGN</A> (Morgenstern,
+        1999) and <A href="http://www.ch.embnet.org/software/TCoffee.html">TCOFFEE</A>
         (Notredame et al., 2000).<BR>
-        · Different methods for calculating consensus sequences such as described 
-        by <A 
-      href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=12424121&amp;dopt=Abstract">[Keith 
-        et al (2002)]</A> and <A 
-      href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=12761063&amp;dopt=Abstract">[Lee 
+        ï¿½ Different methods for calculating consensus sequences such as described
+        by <A
+      href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=12424121&amp;dopt=Abstract">[Keith
+        et al (2002)]</A> and <A
+      href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=12761063&amp;dopt=Abstract">[Lee
         (2003)]</A>.</FONT></FONT></p>
-      <FONT face="Arial, Helvetica, sans-serif" size=3></FONT><FONT face="Arial, Helvetica, sans-serif" 
-      size=3><B>REFERENCE</B></FONT> 
+      <FONT face="Arial, Helvetica, sans-serif" size=3></FONT><FONT face="Arial, Helvetica, sans-serif"
+      size=3><B>REFERENCE</B></FONT>
       <table width="100%" border=0>
-        <tbody> 
-        <tr valign=top align=left> 
-          <td width="30"> 
-            <div align="left"><b><font face="Arial, Helvetica, sans-serif" size=3><font 
+        <tbody>
+        <tr valign=top align=left>
+          <td width="30">
+            <div align="left"><b><font face="Arial, Helvetica, sans-serif" size=3><font
             size=2>(1)</font></font></b></div>
           </td>
-          <td><font face="Arial, Helvetica, sans-serif" size=3><font size=2><a 
-            href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=12136088&amp;dopt=Abstract">Katoh 
-            K., Misawa K., Kuma K. and Miyata T. (2002) MAFFT: a novel method 
-            for rapid multiple sequence alignment based on fast Fourier transform. 
+          <td><font face="Arial, Helvetica, sans-serif" size=3><font size=2><a
+            href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=12136088&amp;dopt=Abstract">Katoh
+            K., Misawa K., Kuma K. and Miyata T. (2002) MAFFT: a novel method
+            for rapid multiple sequence alignment based on fast Fourier transform.
             Nucleic Acids Res., 302, 3059-3066.</a></font></font></td>
         </tr>
-        <tr valign=top align=left> 
+        <tr valign=top align=left>
           <td width="30"><b><font face="Arial, Helvetica, sans-serif" size="2">(2)</font></b></td>
-          <td><font face="Arial, Helvetica, sans-serif" size="2"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=12424121&dopt=Abstract">Keith 
-            J.M., Adams P., Bryant D., Kroese D.P., Mitchelson K.R., Cochran D.A., 
-            Lala G.H. (2002) A simulated annealing algorithm for finding consensus 
+          <td><font face="Arial, Helvetica, sans-serif" size="2"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=12424121&dopt=Abstract">Keith
+            J.M., Adams P., Bryant D., Kroese D.P., Mitchelson K.R., Cochran D.A.,
+            Lala G.H. (2002) A simulated annealing algorithm for finding consensus
             sequences. Bioinformatics 18(11):1494-1499</a></font></td>
         </tr>
-        <tr valign=top align=left> 
+        <tr valign=top align=left>
           <td width="30"><b><font face="Arial, Helvetica, sans-serif" size="2">(3)</font></b></td>
-          <td><font face="Arial, Helvetica, sans-serif" size="2"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=12761063&dopt=Abstract">Lee 
-            C. (2003) Generating consensus sequences from partial order multiple 
+          <td><font face="Arial, Helvetica, sans-serif" size="2"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=12761063&dopt=Abstract">Lee
+            C. (2003) Generating consensus sequences from partial order multiple
             sequence alignment graphs. Bioinformatics 19(8):999-1008.</a></font></td>
         </tr>
-        <tr valign=top align=left> 
-          <td width="30"> 
-            <div align="left"><b><font face="Arial, Helvetica, sans-serif" size=3><font 
+        <tr valign=top align=left>
+          <td width="30">
+            <div align="left"><b><font face="Arial, Helvetica, sans-serif" size=3><font
             size=2>(4)</font></font></b></div>
           </td>
-          <td><font face="Arial, Helvetica, sans-serif" size=3><font size=2><a 
-            href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=12136088&amp;dopt=Abstract">Morgenstern 
-            B. (1999) DIALIGN 2: improvement of the segment-to-segment approach 
+          <td><font face="Arial, Helvetica, sans-serif" size=3><font size=2><a
+            href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=12136088&amp;dopt=Abstract">Morgenstern
+            B. (1999) DIALIGN 2: improvement of the segment-to-segment approach
             to multiple sequence alignment. Bioinformatics, 15, 211-218.</a></font></font></td>
         </tr>
-        <tr valign=top align=left> 
-          <td width="30"> 
+        <tr valign=top align=left>
+          <td width="30">
             <div align="left"><b><font size="2" face="Arial, Helvetica, sans-serif">(5)</font></b></div>
           </td>
-          <td><font size="2" face="Arial, Helvetica, sans-serif"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=10964570&dopt=Abstract"> 
-            Notredame C., Higgins D., Heringa J. (2000) T-Coffee: A novel method 
-            for multiple sequence alignments. Journal of Molecular Biology, 302, 
+          <td><font size="2" face="Arial, Helvetica, sans-serif"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=10964570&dopt=Abstract">
+            Notredame C., Higgins D., Heringa J. (2000) T-Coffee: A novel method
+            for multiple sequence alignments. Journal of Molecular Biology, 302,
             205-217</a></font></td>
         </tr>
-        <tr valign=top align=left> 
-          <td width="30"> 
-            <div align="left"><b><font face="Arial, Helvetica, sans-serif" size=3><font 
+        <tr valign=top align=left>
+          <td width="30">
+            <div align="left"><b><font face="Arial, Helvetica, sans-serif" size=3><font
             size=2>(6)</font></font></b></div>
           </td>
-          <td><font face="Arial, Helvetica, sans-serif" size=3><font size=2><a 
-            href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=11932249&amp;dopt=Abstract">Schug 
-            J., Diskin S., Mazzarelli J., Brunk B.P. and Stoeckert C.J. (2002) 
-            Predicting gene ontology functions from ProDom and CDD protein domains. 
+          <td><font face="Arial, Helvetica, sans-serif" size=3><font size=2><a
+            href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=11932249&amp;dopt=Abstract">Schug
+            J., Diskin S., Mazzarelli J., Brunk B.P. and Stoeckert C.J. (2002)
+            Predicting gene ontology functions from ProDom and CDD protein domains.
             Genome Res., 12, 648-655.</a></font></font></td>
         </tr>
-        <tr valign=top align=left> 
-          <td width="30"> 
-            <div align="left"><b><font face="Arial, Helvetica, sans-serif" size=3><font 
+        <tr valign=top align=left>
+          <td width="30">
+            <div align="left"><b><font face="Arial, Helvetica, sans-serif" size=3><font
             size=2>(7)</font></font></b></div>
           </td>
-          <td><font face="Arial, Helvetica, sans-serif" size=3><font size=2><a 
-            href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=7984417&amp;dopt=Abstract">Thompson 
-            J.D., Higgins D.G. and Gibson T.J. (1994) CLUSTAL W: improving the 
-            sensitivity of progressive multiple sequence alignment through sequence 
-            weighting, position-specific gap penalties and weight matrix choice. 
+          <td><font face="Arial, Helvetica, sans-serif" size=3><font size=2><a
+            href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=7984417&amp;dopt=Abstract">Thompson
+            J.D., Higgins D.G. and Gibson T.J. (1994) CLUSTAL W: improving the
+            sensitivity of progressive multiple sequence alignment through sequence
+            weighting, position-specific gap penalties and weight matrix choice.
             Nucleic Acids Res., 22, 4673-4680.</a></font></font></td>
         </tr>
-        </tbody> 
+        </tbody>
       </table>
-      <FONT face="Arial, Helvetica, sans-serif" 
+      <FONT face="Arial, Helvetica, sans-serif"
       size=3><B> </B></FONT></TD>
   </TR>
-  <TR bgColor=#ddddff> 
+  <TR bgColor=#ddddff>
     <TD colspan="3">&nbsp;</TD>
   </TR>
-  <TR bgColor=#eeeeff> 
-    <TD colspan="3"><FONT face="Arial, Helvetica, sans-serif" size=2>For bug reports, 
-      suggestions etc. please contact <A 
+  <TR bgColor=#eeeeff>
+    <TD colspan="3"><FONT face="Arial, Helvetica, sans-serif" size=2>For bug reports,
+      suggestions etc. please contact <A
       href="mailto:michael.spitzer@uni-muenster.de">michael.spitzer@uni-muenster.de</A></FONT></TD>
   </TR>
-  </TBODY> 
+  </TBODY>
 </TABLE>
 </BODY></HTML>
