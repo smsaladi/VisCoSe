@@ -1,0 +1,9 @@
+viscose.log
+
+temp
+cgi-bin/mafft
+
+mafft/binaries/*
+mafft/scripts/*
+
+*.o
