@@ -20,7 +20,6 @@ use constant cgi_dir     => $Bin;
 use constant mafft_bin   => $Bin . '/mafft';
 use constant link_url    => 'https://viscose.herokuapp.com/temp/';
 
-$ENV{'MAFFT_BINARIES'}  = mafft_bin;
 sub print_header {
     print 'Content-type: text/html', "\n\n", '<HTML>', "\n", '<HEAD>', "\n", '<TITLE>Status of VisCoSe: interface.pl</TITLE>', "\n", '</HEAD>', "\n", '<PRE>', "\n", 'Status of VisCoSe: interface.pl (interface script for consensus visualization):', "\n",
       '--', "\n\n";
